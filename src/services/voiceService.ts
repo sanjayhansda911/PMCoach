@@ -1,9 +1,10 @@
 /**
  * Voice Service: Centralized Speech-to-Text (STT) and Text-to-Speech (TTS)
- * using the browser's native Web Speech API.
+ * using browser-native Web Speech API.
+ * Engineered for zero infinite recursion, clean microphone permission handling,
+ * and reliable cross-platform execution without UI freezes.
  */
 
-// Global type augmentation for Web Speech API recognition in Chromium & Safari
 declare global {
   interface Window {
     SpeechRecognition: any;
@@ -31,7 +32,6 @@ class VoiceService {
   private isSpeakingState: boolean = false;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
   private selectedVoice: SpeechSynthesisVoice | null = null;
-  private recognitionCallbacks: RecognitionCallbacks | null = null;
 
   constructor() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -51,11 +51,21 @@ class VoiceService {
     const voices = window.speechSynthesis.getVoices();
     if (!voices || voices.length === 0) return;
 
-    // Prefer high quality English voices (US or UK)
-    const naturalEnglishVoice = voices.find(
-      (v) =>
-        (v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Jenny') || v.name.includes('Guy')))
-    ) || voices.find((v) => v.lang.startsWith('en-US')) || voices.find((v) => v.lang.startsWith('en'));
+    // Prefer high quality natural English voices
+    const naturalEnglishVoice =
+      voices.find(
+        (v) =>
+          v.lang.startsWith('en') &&
+          (v.name.includes('Natural') ||
+            v.name.includes('Neural') ||
+            v.name.includes('Google') ||
+            v.name.includes('Samantha') ||
+            v.name.includes('Daniel') ||
+            v.name.includes('Jenny') ||
+            v.name.includes('Guy'))
+      ) ||
+      voices.find((v) => v.lang.startsWith('en-US')) ||
+      voices.find((v) => v.lang.startsWith('en'));
 
     this.selectedVoice = naturalEnglishVoice || voices[0];
   }
@@ -83,17 +93,17 @@ class VoiceService {
       return;
     }
 
-    // Stop any in-progress speech first
+    // Stop any current utterance first
     this.stopSpeaking();
 
-    // Clean text: remove markdown symbols, bullets, URLs, and code blocks
+    // Clean text: remove markdown symbols, bullets, code blocks, URLs
     const cleanText = text
-      .replace(/```[\s\S]*?```/g, '') // remove code blocks
-      .replace(/`([^`]+)`/g, '$1') // inline code
-      .replace(/\*\*([^*]+)\*\*/g, '$1') // bold
-      .replace(/\*([^*]+)\*/g, '$1') // italic
-      .replace(/^[#*-]\s+/gm, '') // headings / bullets
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .replace(/^[#*-]\s+/gm, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       .replace(/CIRCLES/g, 'Circles')
       .replace(/RICE/g, 'Rice')
       .replace(/STAR/g, 'Star')
@@ -104,43 +114,52 @@ class VoiceService {
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    if (this.selectedVoice) {
-      utterance.voice = this.selectedVoice;
-    }
-    utterance.lang = options?.lang || this.selectedVoice?.lang || 'en-US';
-    utterance.rate = options?.rate ?? 1.0;
-    utterance.pitch = options?.pitch ?? 1.0;
-
-    utterance.onstart = () => {
-      this.isSpeakingState = true;
-    };
-
-    utterance.onend = () => {
-      this.isSpeakingState = false;
-      this.currentUtterance = null;
-      onEnd?.();
-    };
-
-    utterance.onerror = (e) => {
-      this.isSpeakingState = false;
-      this.currentUtterance = null;
-      // 'interrupted' or 'canceled' are expected when user stops or navigates
-      if (e.error !== 'interrupted' && e.error !== 'canceled') {
-        onError?.(e);
+    try {
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      if (this.selectedVoice) {
+        utterance.voice = this.selectedVoice;
       }
-      onEnd?.();
-    };
+      utterance.lang = options?.lang || this.selectedVoice?.lang || 'en-US';
+      utterance.rate = options?.rate ?? 1.0;
+      utterance.pitch = options?.pitch ?? 1.0;
 
-    this.currentUtterance = utterance;
-    window.speechSynthesis.speak(utterance);
+      utterance.onstart = () => {
+        this.isSpeakingState = true;
+      };
+
+      utterance.onend = () => {
+        this.isSpeakingState = false;
+        this.currentUtterance = null;
+        onEnd?.();
+      };
+
+      utterance.onerror = (e) => {
+        this.isSpeakingState = false;
+        this.currentUtterance = null;
+        if (e.error !== 'interrupted' && e.error !== 'canceled') {
+          onError?.(e);
+        }
+        onEnd?.();
+      };
+
+      this.currentUtterance = utterance;
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      this.isSpeakingState = false;
+      this.currentUtterance = null;
+      onEnd?.();
+    }
   }
 
   public stopSpeaking(): void {
     if (!this.isSpeechSynthesisSupported()) return;
     this.isSpeakingState = false;
     this.currentUtterance = null;
-    window.speechSynthesis.cancel();
+    try {
+      window.speechSynthesis.cancel();
+    } catch {
+      // ignore
+    }
   }
 
   public pauseSpeaking(): void {
@@ -162,7 +181,7 @@ class VoiceService {
   public isSpeechRecognitionSupported(): boolean {
     return (
       typeof window !== 'undefined' &&
-      !!(window.SpeechRecognition || window.webkitSpeechRecognition)
+      Boolean(window.SpeechRecognition || window.webkitSpeechRecognition)
     );
   }
 
@@ -171,40 +190,62 @@ class VoiceService {
   }
 
   /**
-   * Starts live microphone listening and streaming transcription.
+   * Starts live microphone listening and transcription.
+   * Prompts for microphone access cleanly and avoids event-loop locking.
    */
-  public startListening(callbacks: RecognitionCallbacks): boolean {
+  public async startListening(callbacks: RecognitionCallbacks): Promise<boolean> {
     if (!this.isSpeechRecognitionSupported()) {
-      callbacks.onError?.('Speech Recognition is not supported in this browser. Please use Chrome, Edge, or a Chromium-based browser.');
+      callbacks.onError?.(
+        'Speech Recognition is not supported in this browser. Please use Chrome, Edge, or Brave for voice input.'
+      );
       return false;
     }
 
-    if (this.isListeningState) {
-      this.stopListening();
+    // Always stop any previous recognition instance cleanly
+    this.stopListening();
+
+    // Explicitly verify microphone permission first to show standard browser dialog
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Immediately release tracks after permission verification
+        stream.getTracks().forEach((track) => track.stop());
+      } catch (permErr: any) {
+        this.isListeningState = false;
+        if (permErr.name === 'NotAllowedError' || permErr.name === 'PermissionDeniedError') {
+          callbacks.onError?.(
+            'Microphone access was denied. Please click the lock or camera icon in your browser address bar to allow microphone permissions.'
+          );
+        } else {
+          callbacks.onError?.('Could not access microphone. Please check your audio input device.');
+        }
+        return false;
+      }
     }
 
     const SpeechRecognitionClass =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     try {
-      this.recognition = new SpeechRecognitionClass();
-      this.recognition.continuous = true;
-      this.recognition.interimResults = true;
-      this.recognition.lang = 'en-US';
-      this.recognitionCallbacks = callbacks;
+      const recognition = new SpeechRecognitionClass();
+      this.recognition = recognition;
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
 
-      this.recognition.onstart = () => {
+      recognition.onstart = () => {
         this.isListeningState = true;
         callbacks.onStart?.();
       };
 
-      this.recognition.onresult = (event: any) => {
+      recognition.onresult = (event: any) => {
         let interimTranscript = '';
         let finalTranscript = '';
 
         for (let i = event.resultIndex; i < event.results.length; ++i) {
-          const transcriptPiece = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
+          const res = event.results[i];
+          const transcriptPiece = res[0]?.transcript || '';
+          if (res.isFinal) {
             finalTranscript += transcriptPiece;
           } else {
             interimTranscript += transcriptPiece;
@@ -219,36 +260,45 @@ class VoiceService {
         }
       };
 
-      this.recognition.onerror = (event: any) => {
-        let message = event.error || 'Speech recognition error';
-        if (event.error === 'not-allowed') {
-          message = 'Microphone permission was denied. Please allow microphone access in your browser.';
-        } else if (event.error === 'no-speech') {
-          // Normal silence, no error alert needed
-          return;
+      recognition.onerror = (event: any) => {
+        const errType = event.error;
+        console.warn('[VoiceService] Speech recognition event error:', errType);
+
+        // Crucial: Set listening state to false to terminate any recursion
+        this.isListeningState = false;
+
+        if (errType === 'not-allowed' || errType === 'service-not-allowed') {
+          callbacks.onError?.(
+            'Microphone permission was denied. Please allow microphone access in your browser.'
+          );
+        } else if (errType === 'audio-capture') {
+          callbacks.onError?.(
+            'No microphone detected. Please connect an audio input device and try again.'
+          );
+        } else if (errType === 'no-speech') {
+          // Normal pause in speaking - cleanly end listening without alerting an error
+          callbacks.onEnd?.();
+        } else if (errType === 'network') {
+          callbacks.onError?.(
+            'Network communication error with speech recognition service.'
+          );
+        } else {
+          callbacks.onError?.(`Speech recognition error: ${errType}`);
         }
-        callbacks.onError?.(message);
       };
 
-      this.recognition.onend = () => {
-        // If still supposed to be listening, restart (Chromium stops after brief silence)
-        if (this.isListeningState && this.recognition) {
-          try {
-            this.recognition.start();
-            return;
-          } catch {
-            // ignore
-          }
-        }
+      recognition.onend = () => {
         this.isListeningState = false;
+        this.recognition = null;
         callbacks.onEnd?.();
       };
 
-      this.recognition.start();
+      recognition.start();
       return true;
     } catch (err: any) {
       this.isListeningState = false;
-      callbacks.onError?.(err.message || 'Failed to start microphone.');
+      this.recognition = null;
+      callbacks.onError?.(err.message || 'Failed to initialize microphone.');
       return false;
     }
   }
@@ -257,14 +307,16 @@ class VoiceService {
     this.isListeningState = false;
     if (this.recognition) {
       try {
+        this.recognition.onstart = null;
+        this.recognition.onresult = null;
+        this.recognition.onerror = null;
+        this.recognition.onend = null;
         this.recognition.stop();
       } catch {
         // ignore
       }
       this.recognition = null;
     }
-    this.recognitionCallbacks?.onEnd?.();
-    this.recognitionCallbacks = null;
   }
 }
 

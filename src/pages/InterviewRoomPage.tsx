@@ -215,7 +215,7 @@ export const InterviewRoomPage: React.FC = () => {
   };
 
   // Handle Candidate Microphone Dictation Toggle
-  const handleToggleMic = () => {
+  const handleToggleMic = async () => {
     if (isListening) {
       voiceService.stopListening();
       setIsListening(false);
@@ -230,14 +230,17 @@ export const InterviewRoomPage: React.FC = () => {
     }
 
     setErrorMsg(null);
-    const started = voiceService.startListening({
+    const started = await voiceService.startListening({
       onStart: () => {
         setIsListening(true);
       },
       onFinal: (finalText) => {
-        setCandidateResponse((prev) =>
-          prev.trim() ? `${prev.trim()} ${finalText.trim()}` : finalText.trim()
-        );
+        const cleaned = finalText.trim();
+        if (cleaned) {
+          setCandidateResponse((prev) =>
+            prev.trim() ? `${prev.trim()} ${cleaned}` : cleaned
+          );
+        }
         setInterimSpeech('');
       },
       onInterim: (interim) => {
@@ -255,9 +258,7 @@ export const InterviewRoomPage: React.FC = () => {
     });
 
     if (!started) {
-      setErrorMsg(
-        'Speech Recognition is not supported in this browser. Please use Chrome, Edge, or Brave for voice input.'
-      );
+      setIsListening(false);
     }
   };
 
