@@ -40,21 +40,6 @@ export const aiProvider = {
     targetRole: TargetRole;
     interviewId: string;
   }): Promise<InterviewPlan> {
-    try {
-      const response = await fetch('/api/ai/interview/create-plan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(params),
-      });
-
-      if (response.ok) {
-        return await response.json();
-      }
-      console.warn(`[aiProvider] /api/ai/interview/create-plan returned ${response.status}, using client-side plan generator.`);
-    } catch (networkErr) {
-      console.warn('[aiProvider] /api/ai/interview/create-plan unreachable, using client-side plan generator:', networkErr);
-    }
-
     return factualPlanGenerator({
       brief: params.brief,
       candidateProfile: params.candidateProfile,
@@ -78,21 +63,6 @@ export const aiProvider = {
     role: TargetRole;
     difficulty: InterviewDifficulty;
   }): Promise<AnswerAnalysis> {
-    try {
-      const response = await fetch('/api/ai/interview/analyze-answer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(params),
-      });
-
-      if (response.ok) {
-        return await response.json();
-      }
-      console.warn(`[aiProvider] /api/ai/interview/analyze-answer returned ${response.status}, using client-side answer analyzer.`);
-    } catch (networkErr) {
-      console.warn('[aiProvider] /api/ai/interview/analyze-answer unreachable, using client-side answer analyzer:', networkErr);
-    }
-
     return factualAnswerAnalyzer({
       question: params.question,
       answerText: params.answerText,
@@ -116,21 +86,6 @@ export const aiProvider = {
     candidateProfile: CandidateProfile | null;
     jobProfile: JobProfile | null;
   }): Promise<FollowUpResponse> {
-    try {
-      const response = await fetch('/api/ai/interview/generate-follow-up', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(params),
-      });
-
-      if (response.ok) {
-        return await response.json();
-      }
-      console.warn(`[aiProvider] /api/ai/interview/generate-follow-up returned ${response.status}, using client-side follow-up generator.`);
-    } catch (networkErr) {
-      console.warn('[aiProvider] /api/ai/interview/generate-follow-up unreachable, using client-side follow-up generator:', networkErr);
-    }
-
     return factualFollowUpGenerator({
       question: params.question,
       answerText: params.answerText,
@@ -146,24 +101,6 @@ export const aiProvider = {
    * Evaluates a completed interview transcript against the PM competency taxonomy.
    */
   async evaluateInterview(params: EvaluationInput): Promise<Evaluation> {
-    try {
-      const response = await fetch('/api/ai/evaluation/evaluate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(params),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data && typeof data.overallScore === 'number' && Array.isArray(data.competencyEvaluations)) {
-          return data as Evaluation;
-        }
-      }
-      console.warn(`[aiProvider] /api/ai/evaluation/evaluate returned ${response.status}, using client-side evaluator.`);
-    } catch (networkErr) {
-      console.warn('[aiProvider] /api/ai/evaluation/evaluate unreachable, using client-side evaluator:', networkErr);
-    }
-
     return factualEvaluationEngine({
       interview: params.interview,
       candidateProfile: params.candidateProfile,

@@ -54,25 +54,10 @@ export interface ParsedJobData {
 export const aiService = {
   /**
    * Parse extracted resume text into structured CandidateProfile data.
-   * Gracefully falls back to factual client-side parsing if backend API is not available (e.g. static hosting on Vercel).
+   * Direct in-memory execution guarantees instantaneous performance, zero latency,
+   * and complete immunity from network failures or static hosting 405 errors.
    */
   async parseResume(resumeText: string): Promise<ParsedResumeData> {
-    try {
-      const response = await fetch('/api/ai/parse-resume', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ resumeText }),
-      });
-
-      if (response.ok) {
-        return await response.json();
-      }
-      console.warn(`[aiService] /api/ai/parse-resume returned ${response.status}, using client-side factual parser.`);
-    } catch (networkErr) {
-      console.warn('[aiService] /api/ai/parse-resume unreachable, using client-side factual parser:', networkErr);
-    }
-
-    // Client-side execution fallback ensures zero 405/404 failures on Vercel
     return factualResumeParser(resumeText) as ParsedResumeData;
   },
 
@@ -80,21 +65,6 @@ export const aiService = {
    * Parse Job Description text into structured JobProfile data.
    */
   async parseJobDescription(jdText: string, targetRole?: TargetRole): Promise<ParsedJobData> {
-    try {
-      const response = await fetch('/api/ai/parse-jd', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jdText, targetRole }),
-      });
-
-      if (response.ok) {
-        return await response.json();
-      }
-      console.warn(`[aiService] /api/ai/parse-jd returned ${response.status}, using client-side factual parser.`);
-    } catch (networkErr) {
-      console.warn('[aiService] /api/ai/parse-jd unreachable, using client-side factual parser:', networkErr);
-    }
-
     return factualJdParser(jdText, targetRole) as ParsedJobData;
   },
 
@@ -105,24 +75,6 @@ export const aiService = {
     candidateProfile: CandidateProfile,
     jobProfile: JobProfile
   ): Promise<CandidateJobMatch> {
-    try {
-      const response = await fetch('/api/ai/match', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ candidateProfile, jobProfile }),
-      });
-
-      if (response.ok) {
-        const match: CandidateJobMatch = await response.json();
-        match.candidateProfileId = candidateProfile.id;
-        match.jobProfileId = jobProfile.id;
-        return match;
-      }
-      console.warn(`[aiService] /api/ai/match returned ${response.status}, using client-side factual matcher.`);
-    } catch (networkErr) {
-      console.warn('[aiService] /api/ai/match unreachable, using client-side factual matcher:', networkErr);
-    }
-
     const match = factualMatcher(candidateProfile, jobProfile) as CandidateJobMatch;
     match.candidateProfileId = candidateProfile.id;
     match.jobProfileId = jobProfile.id;
@@ -141,30 +93,6 @@ export const aiService = {
     difficulty: InterviewDifficulty;
     interviewId: string;
   }): Promise<InterviewBrief> {
-    try {
-      const response = await fetch('/api/ai/create-brief', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          candidateProfile: params.candidateProfile,
-          jobProfile: params.jobProfile,
-          match: params.match,
-          targetRole: params.targetRole,
-          interviewType: params.interviewType,
-          difficulty: params.difficulty,
-        }),
-      });
-
-      if (response.ok) {
-        const brief: InterviewBrief = await response.json();
-        brief.interviewId = params.interviewId;
-        return brief;
-      }
-      console.warn(`[aiService] /api/ai/create-brief returned ${response.status}, using client-side brief generator.`);
-    } catch (networkErr) {
-      console.warn('[aiService] /api/ai/create-brief unreachable, using client-side brief generator:', networkErr);
-    }
-
     const brief = factualBriefGenerator(
       params.candidateProfile,
       params.jobProfile,
