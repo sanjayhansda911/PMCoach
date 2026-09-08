@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, TargetRole } from '../types';
-import { CURRENT_USER } from '../data/mockData';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export interface AuthResult {
@@ -15,7 +14,6 @@ interface AuthContextType {
   isLoading: boolean;
   isSupabaseEnabled: boolean;
   login: (email: string, password?: string) => Promise<AuthResult>;
-  loginDemoUser: () => void;
   signup: (
     name: string,
     email: string,
@@ -50,7 +48,7 @@ function mapSupabaseUserToUser(supabaseUser: any, fallbackRole?: TargetRole): Us
           month: 'long',
           year: 'numeric',
         })
-      : 'September 2026',
+      : new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
   };
 }
 
@@ -61,12 +59,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const saved = localStorage.getItem(AUTH_STORAGE_KEY);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        // Clear any legacy dummy user accounts like Alex Chen
+        if (
+          parsed?.email === 'alex.chen@example.com' ||
+          parsed?.email === 'alex.chen@productleader.io' ||
+          parsed?.name === 'Alex Chen'
+        ) {
+          localStorage.removeItem(AUTH_STORAGE_KEY);
+          return null;
+        }
+        return parsed;
       } catch (e) {
         console.error('Failed to parse stored user', e);
       }
     }
-    return CURRENT_USER; // Default for immediate smooth developer experience
+    // Default to null: visitors are unauthenticated until they log in or sign up
+    return null;
   });
 
   // Listen to Supabase auth events if configured
@@ -80,6 +89,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     supabase.auth.getSession().then(({ data: { session }, error }) => {
       if (!error && session?.user) {
         setUser(mapSupabaseUserToUser(session.user));
+      } else {
+        setUser(null);
+        localStorage.removeItem(AUTH_STORAGE_KEY);
       }
       setIsLoading(false);
     });
@@ -90,11 +102,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (session?.user) {
         setUser(mapSupabaseUserToUser(session.user));
       } else {
-        // Only clear if not in manual demo user mode
-        const saved = localStorage.getItem(AUTH_STORAGE_KEY);
-        if (!saved) {
-          setUser(null);
-        }
+        setUser(null);
+        localStorage.removeItem(AUTH_STORAGE_KEY);
       }
       setIsLoading(false);
     });
@@ -136,7 +145,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    // Graceful fallback for demo/offline
+    // Local fallback for offline/development use
     await new Promise((resolve) => setTimeout(resolve, 300));
     const loggedUser: User = {
       id: `user-${Date.now()}`,
@@ -145,8 +154,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         'Product Manager',
       email: email,
       targetRole: 'Senior Product Manager',
-      avatarUrl: CURRENT_USER.avatarUrl,
-      joinedDate: 'September 2026',
+      avatarUrl:
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+      joinedDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
     };
     setUser(loggedUser);
     return { success: true };
@@ -195,7 +205,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    // Graceful fallback for demo/offline
+    // Local fallback for offline/development use
     await new Promise((resolve) => setTimeout(resolve, 300));
     const newUser: User = {
       id: `user-${Date.now()}`,
@@ -204,15 +214,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       targetRole: targetRole,
       avatarUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-      joinedDate: 'September 2026',
+      joinedDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
     };
     setUser(newUser);
     return { success: true };
-  };
-
-  // 1-Click Demo Login
-  const loginDemoUser = () => {
-    setUser(CURRENT_USER);
   };
 
   // Log out
@@ -233,9 +238,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const updated = { ...user, targetRole: role };
       setUser(updated);
       if (isSupabaseEnabled) {
-        supabase.auth.updateUser({
-          data: { targetRole: role },
-        }).catch((err) => console.warn('Could not sync user role to Supabase:', err));
+        supabase.auth
+          .updateUser({
+            data: { targetRole: role },
+          })
+          .catch((err) => console.warn('Could not sync user role to Supabase:', err));
       }
     }
   };
@@ -248,7 +255,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading,
         isSupabaseEnabled,
         login,
-        loginDemoUser,
         signup,
         logout,
         updateUserRole,

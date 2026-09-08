@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Compass, Mail, Lock, ArrowRight, Sparkles, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Compass, Mail, Lock, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -8,11 +8,11 @@ import { Badge } from '../components/ui/Badge';
 import { Card, CardContent, CardFooter } from '../components/ui/Card';
 
 export const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState('alex.chen@productleader.io');
-  const [password, setPassword] = useState('Password123!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const { login, loginDemoUser, isSupabaseEnabled } = useAuth();
+  const { login, isSupabaseEnabled } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,11 +28,6 @@ export const LoginPage: React.FC = () => {
     } else {
       setErrorMsg(result.error || 'Invalid email or password. Please try again.');
     }
-  };
-
-  const handleDemoLogin = () => {
-    loginDemoUser();
-    navigate('/dashboard');
   };
 
   return (
@@ -59,30 +54,10 @@ export const LoginPage: React.FC = () => {
               </Badge>
             ) : (
               <Badge variant="outline" className="text-[11px] gap-1 bg-slate-50 text-slate-600 border-slate-200">
-                Local / Demo Mode
+                Local Authentication
               </Badge>
             )}
           </div>
-        </div>
-
-        {/* 1-Click Demo Callout */}
-        <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-3.5 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <Sparkles className="h-4 w-4 text-indigo-600 shrink-0" />
-            <div className="text-xs">
-              <span className="font-bold text-indigo-950">1-Click Demo Profile: </span>
-              <span className="text-indigo-800">Alex Chen (Senior PM)</span>
-            </div>
-          </div>
-          <Button
-            type="button"
-            size="sm"
-            variant="subtle"
-            className="h-7 text-xs bg-white text-indigo-700 shadow-xs hover:bg-indigo-50 border border-indigo-100"
-            onClick={handleDemoLogin}
-          >
-            Instant Enter
-          </Button>
         </div>
 
         {/* Error Alert */}
@@ -116,7 +91,7 @@ export const LoginPage: React.FC = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="Enter your password"
                 icon={<Lock className="h-4 w-4" />}
               />
 
@@ -130,7 +105,7 @@ export const LoginPage: React.FC = () => {
                   <span>Remember this device</span>
                 </label>
                 <span className="text-slate-400 text-[11px]">
-                  {isSupabaseEnabled ? 'Protected by Supabase Auth' : 'Demo Mode Active'}
+                  {isSupabaseEnabled ? 'Protected by Supabase' : 'Local Auth'}
                 </span>
               </div>
 

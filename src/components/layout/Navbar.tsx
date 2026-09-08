@@ -153,7 +153,7 @@ export const Navbar: React.FC = () => {
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button size="sm">Sign up</Button>
+                <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700">Get Started</Button>
               </Link>
             </div>
           )}

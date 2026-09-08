@@ -8,12 +8,17 @@ import {
   Layers,
   FileCheck,
   ChevronRight,
+  LogIn,
+  UserPlus,
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { Card, CardContent } from '../components/ui/Card';
 
 export const LandingPage: React.FC = () => {
+  const { isAuthenticated, user } = useAuth();
+
   return (
     <div className="relative overflow-hidden">
       {/* Background radial gradient blobs */}
@@ -25,7 +30,7 @@ export const LandingPage: React.FC = () => {
           {/* Tag Pill */}
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-50/80 px-4 py-1.5 text-xs font-semibold text-indigo-700 shadow-sm transition-all hover:bg-indigo-100 mb-8">
             <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
-            <span>Structured Mock Interviews & Rubrics</span>
+            <span>Structured Mock Interviews & Calibrated Rubrics</span>
             <ChevronRight className="h-3.5 w-3.5 text-indigo-500" />
           </div>
 
@@ -44,18 +49,49 @@ export const LandingPage: React.FC = () => {
 
           {/* Action CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/setup" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full gap-2 shadow-lg shadow-indigo-500/25">
-                <span>Start Mock Interview</span>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <a href="#how-it-works" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full">
-                See How It Works
-              </Button>
-            </a>
+            {isAuthenticated ? (
+              <>
+                <Link to="/setup" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full gap-2 shadow-lg shadow-indigo-500/25">
+                    <span>Start Mock Interview</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link to="/dashboard" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full">
+                    <span>Candidate Dashboard</span>
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/signup" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full gap-2 shadow-lg shadow-indigo-500/25 bg-indigo-600 hover:bg-indigo-700">
+                    <UserPlus className="h-4 w-4" />
+                    <span>Get Started Free</span>
+                  </Button>
+                </Link>
+                <Link to="/login" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full gap-2 border-slate-300 hover:bg-slate-50">
+                    <LogIn className="h-4 w-4 text-indigo-600" />
+                    <span>Log In</span>
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
+
+          {!isAuthenticated && (
+            <div className="mt-4">
+              <Link
+                to="/setup"
+                className="text-xs font-medium text-slate-500 hover:text-indigo-600 transition-colors inline-flex items-center gap-1"
+              >
+                <span>Or start an instant guest interview without an account</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -131,9 +167,9 @@ export const LandingPage: React.FC = () => {
                 <span className="text-xs text-slate-400">
                   Select your target seniority from APM to Group PM.
                 </span>
-                <Link to="/setup">
+                <Link to={isAuthenticated ? '/setup' : '/signup'}>
                   <Button size="sm" className="gap-1.5">
-                    Start Mock Interview <ArrowRight className="h-3.5 w-3.5" />
+                    {isAuthenticated ? 'Start Mock Interview' : 'Get Started'} <ArrowRight className="h-3.5 w-3.5" />
                   </Button>
                 </Link>
               </div>
@@ -198,17 +234,34 @@ export const LandingPage: React.FC = () => {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="rounded-3xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-700 p-8 sm:p-12 text-center text-white shadow-xl shadow-indigo-500/20">
           <h2 className="text-3xl font-extrabold sm:text-4xl">
-            Set up your next mock interview
+            {isAuthenticated ? 'Set up your next mock interview' : 'Create your free account today'}
           </h2>
           <p className="mt-3 max-w-xl mx-auto text-sm sm:text-base text-indigo-100">
-            Configure your target role, difficulty, and job description to begin.
+            {isAuthenticated
+              ? `Welcome back, ${user?.name || 'Product Leader'}. Configure your target role, difficulty, and job description to begin.`
+              : 'Join to practice with real AI simulations, track your competency growth across sessions, and receive calibrated coaching feedback.'}
           </p>
-          <div className="mt-8 flex justify-center">
-            <Link to="/setup">
-              <Button size="lg" className="bg-white text-indigo-700 hover:bg-slate-50 font-bold px-8 shadow-lg">
-                Start Mock Interview
-              </Button>
-            </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {isAuthenticated ? (
+              <Link to="/setup">
+                <Button size="lg" className="bg-white text-indigo-700 hover:bg-slate-50 font-bold px-8 shadow-lg">
+                  Start Mock Interview
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/signup">
+                  <Button size="lg" className="bg-white text-indigo-700 hover:bg-slate-50 font-bold px-8 shadow-lg">
+                    Get Started Free
+                  </Button>
+                </Link>
+                <Link to="/login">
+                  <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 font-bold px-8">
+                    Log In
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>
