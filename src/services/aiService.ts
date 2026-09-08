@@ -7,6 +7,12 @@ import {
   InterviewType,
   InterviewDifficulty,
 } from '../types';
+import {
+  factualResumeParser,
+  factualJdParser,
+  factualMatcher,
+  factualBriefGenerator,
+} from './factualEngine';
 
 export interface ParsedResumeData {
   candidateName: string | null;
@@ -48,38 +54,48 @@ export interface ParsedJobData {
 export const aiService = {
   /**
    * Parse extracted resume text into structured CandidateProfile data.
+   * Gracefully falls back to factual client-side parsing if backend API is not available (e.g. static hosting on Vercel).
    */
   async parseResume(resumeText: string): Promise<ParsedResumeData> {
-    const response = await fetch('/api/ai/parse-resume', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ resumeText }),
-    });
+    try {
+      const response = await fetch('/api/ai/parse-resume', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ resumeText }),
+      });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.error || `Resume parsing failed with status ${response.status}`);
+      if (response.ok) {
+        return await response.json();
+      }
+      console.warn(`[aiService] /api/ai/parse-resume returned ${response.status}, using client-side factual parser.`);
+    } catch (networkErr) {
+      console.warn('[aiService] /api/ai/parse-resume unreachable, using client-side factual parser:', networkErr);
     }
 
-    return response.json();
+    // Client-side execution fallback ensures zero 405/404 failures on Vercel
+    return factualResumeParser(resumeText) as ParsedResumeData;
   },
 
   /**
    * Parse Job Description text into structured JobProfile data.
    */
   async parseJobDescription(jdText: string, targetRole?: TargetRole): Promise<ParsedJobData> {
-    const response = await fetch('/api/ai/parse-jd', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jdText, targetRole }),
-    });
+    try {
+      const response = await fetch('/api/ai/parse-jd', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jdText, targetRole }),
+      });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.error || `Job description parsing failed with status ${response.status}`);
+      if (response.ok) {
+        return await response.json();
+      }
+      console.warn(`[aiService] /api/ai/parse-jd returned ${response.status}, using client-side factual parser.`);
+    } catch (networkErr) {
+      console.warn('[aiService] /api/ai/parse-jd unreachable, using client-side factual parser:', networkErr);
     }
 
-    return response.json();
+    return factualJdParser(jdText, targetRole) as ParsedJobData;
   },
 
   /**
@@ -89,18 +105,25 @@ export const aiService = {
     candidateProfile: CandidateProfile,
     jobProfile: JobProfile
   ): Promise<CandidateJobMatch> {
-    const response = await fetch('/api/ai/match', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ candidateProfile, jobProfile }),
-    });
+    try {
+      const response = await fetch('/api/ai/match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ candidateProfile, jobProfile }),
+      });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.error || `Candidate matching failed with status ${response.status}`);
+      if (response.ok) {
+        const match: CandidateJobMatch = await response.json();
+        match.candidateProfileId = candidateProfile.id;
+        match.jobProfileId = jobProfile.id;
+        return match;
+      }
+      console.warn(`[aiService] /api/ai/match returned ${response.status}, using client-side factual matcher.`);
+    } catch (networkErr) {
+      console.warn('[aiService] /api/ai/match unreachable, using client-side factual matcher:', networkErr);
     }
 
-    const match: CandidateJobMatch = await response.json();
+    const match = factualMatcher(candidateProfile, jobProfile) as CandidateJobMatch;
     match.candidateProfileId = candidateProfile.id;
     match.jobProfileId = jobProfile.id;
     return match;
@@ -118,25 +141,38 @@ export const aiService = {
     difficulty: InterviewDifficulty;
     interviewId: string;
   }): Promise<InterviewBrief> {
-    const response = await fetch('/api/ai/create-brief', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        candidateProfile: params.candidateProfile,
-        jobProfile: params.jobProfile,
-        match: params.match,
-        targetRole: params.targetRole,
-        interviewType: params.interviewType,
-        difficulty: params.difficulty,
-      }),
-    });
+    try {
+      const response = await fetch('/api/ai/create-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          candidateProfile: params.candidateProfile,
+          jobProfile: params.jobProfile,
+          match: params.match,
+          targetRole: params.targetRole,
+          interviewType: params.interviewType,
+          difficulty: params.difficulty,
+        }),
+      });
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.error || `Brief generation failed with status ${response.status}`);
+      if (response.ok) {
+        const brief: InterviewBrief = await response.json();
+        brief.interviewId = params.interviewId;
+        return brief;
+      }
+      console.warn(`[aiService] /api/ai/create-brief returned ${response.status}, using client-side brief generator.`);
+    } catch (networkErr) {
+      console.warn('[aiService] /api/ai/create-brief unreachable, using client-side brief generator:', networkErr);
     }
 
-    const brief: InterviewBrief = await response.json();
+    const brief = factualBriefGenerator(
+      params.candidateProfile,
+      params.jobProfile,
+      params.match,
+      params.targetRole,
+      params.interviewType,
+      params.difficulty
+    ) as InterviewBrief;
     brief.interviewId = params.interviewId;
     return brief;
   },
