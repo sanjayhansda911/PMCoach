@@ -43,22 +43,29 @@ export const InterviewProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   }, []);
 
-  const setCurrentInterview = (interview: Interview | null) => {
-    setCurrentInterviewState(interview);
+  const setCurrentInterview = useCallback((interview: Interview | null) => {
+    setCurrentInterviewState((prev) => {
+      if (prev?.id === interview?.id) return prev;
+      return interview;
+    });
     if (interview) {
       localStorage.setItem(CURRENT_INTERVIEW_ID_KEY, interview.id);
     } else {
       localStorage.removeItem(CURRENT_INTERVIEW_ID_KEY);
     }
-  };
+  }, []);
 
-  const deleteInterview = async (id: string) => {
+  const deleteInterview = useCallback(async (id: string) => {
     await interviewService.deleteInterview(id);
-    if (currentInterview?.id === id) {
-      setCurrentInterview(null);
-    }
+    setCurrentInterviewState((prev) => {
+      if (prev?.id === id) {
+        localStorage.removeItem(CURRENT_INTERVIEW_ID_KEY);
+        return null;
+      }
+      return prev;
+    });
     await refreshInterviews();
-  };
+  }, [refreshInterviews]);
 
   return (
     <InterviewContext.Provider

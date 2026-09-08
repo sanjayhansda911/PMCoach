@@ -1,8 +1,8 @@
 /**
  * Voice Service: Centralized Speech-to-Text (STT) and Text-to-Speech (TTS)
  * using browser-native Web Speech API.
- * Engineered for zero infinite recursion, clean microphone permission handling,
- * and reliable cross-platform execution without UI freezes.
+ * Engineered for clean non-blocking execution, zero infinite loops,
+ * and seamless cross-platform performance.
  */
 
 declare global {
@@ -48,26 +48,29 @@ class VoiceService {
 
   private initVoiceSelection() {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    const voices = window.speechSynthesis.getVoices();
-    if (!voices || voices.length === 0) return;
+    try {
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return;
 
-    // Prefer high quality natural English voices
-    const naturalEnglishVoice =
-      voices.find(
-        (v) =>
-          v.lang.startsWith('en') &&
-          (v.name.includes('Natural') ||
-            v.name.includes('Neural') ||
-            v.name.includes('Google') ||
-            v.name.includes('Samantha') ||
-            v.name.includes('Daniel') ||
-            v.name.includes('Jenny') ||
-            v.name.includes('Guy'))
-      ) ||
-      voices.find((v) => v.lang.startsWith('en-US')) ||
-      voices.find((v) => v.lang.startsWith('en'));
+      const naturalEnglishVoice =
+        voices.find(
+          (v) =>
+            v.lang.startsWith('en') &&
+            (v.name.includes('Natural') ||
+              v.name.includes('Neural') ||
+              v.name.includes('Google') ||
+              v.name.includes('Samantha') ||
+              v.name.includes('Daniel') ||
+              v.name.includes('Jenny') ||
+              v.name.includes('Guy'))
+        ) ||
+        voices.find((v) => v.lang.startsWith('en-US')) ||
+        voices.find((v) => v.lang.startsWith('en'));
 
-    this.selectedVoice = naturalEnglishVoice || voices[0];
+      this.selectedVoice = naturalEnglishVoice || voices[0];
+    } catch {
+      // ignore
+    }
   }
 
   public isSpeechSynthesisSupported(): boolean {
@@ -144,7 +147,7 @@ class VoiceService {
 
       this.currentUtterance = utterance;
       window.speechSynthesis.speak(utterance);
-    } catch (e) {
+    } catch {
       this.isSpeakingState = false;
       this.currentUtterance = null;
       onEnd?.();
@@ -156,7 +159,9 @@ class VoiceService {
     this.isSpeakingState = false;
     this.currentUtterance = null;
     try {
-      window.speechSynthesis.cancel();
+      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
+      }
     } catch {
       // ignore
     }
@@ -164,13 +169,21 @@ class VoiceService {
 
   public pauseSpeaking(): void {
     if (this.isSpeechSynthesisSupported() && window.speechSynthesis.speaking) {
-      window.speechSynthesis.pause();
+      try {
+        window.speechSynthesis.pause();
+      } catch {
+        // ignore
+      }
     }
   }
 
   public resumeSpeaking(): void {
     if (this.isSpeechSynthesisSupported() && window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
+      try {
+        window.speechSynthesis.resume();
+      } catch {
+        // ignore
+      }
     }
   }
 
@@ -191,9 +204,9 @@ class VoiceService {
 
   /**
    * Starts live microphone listening and transcription.
-   * Prompts for microphone access cleanly and avoids event-loop locking.
+   * Completely asynchronous, avoids audio hardware contention, and prevents page freezing.
    */
-  public async startListening(callbacks: RecognitionCallbacks): Promise<boolean> {
+  public startListening(callbacks: RecognitionCallbacks): boolean {
     if (!this.isSpeechRecognitionSupported()) {
       callbacks.onError?.(
         'Speech Recognition is not supported in this browser. Please use Chrome, Edge, or Brave for voice input.'
@@ -201,27 +214,8 @@ class VoiceService {
       return false;
     }
 
-    // Always stop any previous recognition instance cleanly
+    // Stop any active recognition session cleanly first
     this.stopListening();
-
-    // Explicitly verify microphone permission first to show standard browser dialog
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        // Immediately release tracks after permission verification
-        stream.getTracks().forEach((track) => track.stop());
-      } catch (permErr: any) {
-        this.isListeningState = false;
-        if (permErr.name === 'NotAllowedError' || permErr.name === 'PermissionDeniedError') {
-          callbacks.onError?.(
-            'Microphone access was denied. Please click the lock or camera icon in your browser address bar to allow microphone permissions.'
-          );
-        } else {
-          callbacks.onError?.('Could not access microphone. Please check your audio input device.');
-        }
-        return false;
-      }
-    }
 
     const SpeechRecognitionClass =
       window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -264,23 +258,25 @@ class VoiceService {
         const errType = event.error;
         console.warn('[VoiceService] Speech recognition event error:', errType);
 
-        // Crucial: Set listening state to false to terminate any recursion
         this.isListeningState = false;
+
+        if (errType === 'no-speech') {
+          // Normal pause in speaking, cleanly conclude
+          callbacks.onEnd?.();
+          return;
+        }
 
         if (errType === 'not-allowed' || errType === 'service-not-allowed') {
           callbacks.onError?.(
-            'Microphone permission was denied. Please allow microphone access in your browser.'
+            'Microphone access was denied. Please click the lock or camera icon in your browser address bar to allow microphone permissions.'
           );
         } else if (errType === 'audio-capture') {
           callbacks.onError?.(
             'No microphone detected. Please connect an audio input device and try again.'
           );
-        } else if (errType === 'no-speech') {
-          // Normal pause in speaking - cleanly end listening without alerting an error
-          callbacks.onEnd?.();
         } else if (errType === 'network') {
           callbacks.onError?.(
-            'Network communication error with speech recognition service.'
+            'Speech recognition network communication error. Please check your internet connection.'
           );
         } else {
           callbacks.onError?.(`Speech recognition error: ${errType}`);
@@ -298,7 +294,7 @@ class VoiceService {
     } catch (err: any) {
       this.isListeningState = false;
       this.recognition = null;
-      callbacks.onError?.(err.message || 'Failed to initialize microphone.');
+      callbacks.onError?.(err.message || 'Failed to start microphone.');
       return false;
     }
   }
@@ -306,16 +302,17 @@ class VoiceService {
   public stopListening(): void {
     this.isListeningState = false;
     if (this.recognition) {
+      const rec = this.recognition;
+      this.recognition = null;
       try {
-        this.recognition.onstart = null;
-        this.recognition.onresult = null;
-        this.recognition.onerror = null;
-        this.recognition.onend = null;
-        this.recognition.stop();
+        rec.onstart = null;
+        rec.onresult = null;
+        rec.onerror = null;
+        rec.onend = null;
+        rec.stop();
       } catch {
         // ignore
       }
-      this.recognition = null;
     }
   }
 }

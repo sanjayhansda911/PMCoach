@@ -129,7 +129,7 @@ export const InterviewRoomPage: React.FC = () => {
     return () => {
       isMounted = false;
     };
-  }, [targetId, setCurrentInterview]);
+  }, [targetId]);
 
   // 2. Timer tick: update local clock and persist elapsed time
   useEffect(() => {
@@ -147,7 +147,7 @@ export const InterviewRoomPage: React.FC = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [interview, isPaused, engineState?.currentStage]);
+  }, [interview?.id, isPaused, engineState?.currentStage]);
 
   // 3. Auto-scroll to latest message
   useEffect(() => {
