@@ -1,0 +1,4169 @@
+{
+  "id": "report-1788850013267",
+  "systemType": "all",
+  "provider": "gemini",
+  "totalCases": 25,
+  "passedCases": 18,
+  "overallScore": 95,
+  "interviewerScore": 97,
+  "evaluatorScore": 92,
+  "metricScores": {
+    "relevance": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "adaptiveness": {
+      "rawAverage": 1.9,
+      "normalizedPercent": 95,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "probe_quality": {
+      "rawAverage": 1.7,
+      "normalizedPercent": 85,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "repetition": {
+      "rawAverage": 1,
+      "normalizedPercent": 100,
+      "maxPoints": 1,
+      "count": 15
+    },
+    "difficulty_calibration": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "plan_adherence": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "pm_realism": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 15
+    },
+    "score_validity": {
+      "rawAverage": 1.5,
+      "normalizedPercent": 75,
+      "maxPoints": 2,
+      "count": 10
+    },
+    "evidence_accuracy": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 10
+    },
+    "rubric_adherence": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 10
+    },
+    "framework_bias": {
+      "rawAverage": 0.9,
+      "normalizedPercent": 90,
+      "maxPoints": 1,
+      "count": 10
+    },
+    "insufficient_evidence_handling": {
+      "rawAverage": 0.9,
+      "normalizedPercent": 90,
+      "maxPoints": 1,
+      "count": 10
+    },
+    "communication_separation": {
+      "rawAverage": 0.8,
+      "normalizedPercent": 80,
+      "maxPoints": 1,
+      "count": 10
+    },
+    "consistency": {
+      "rawAverage": 2,
+      "normalizedPercent": 100,
+      "maxPoints": 2,
+      "count": 10
+    }
+  },
+  "failureBreakdown": {
+    "missed_probe": 1,
+    "unsupported_score": 4,
+    "communication_reasoning_conflation": 2,
+    "insufficient_evidence_ignored": 1,
+    "framework_keyword_bias": 1
+  },
+  "worstCases": [
+    {
+      "caseId": "CASE-21",
+      "caseName": "Strong reasoning but weak communication",
+      "category": "strong_reasoning_weak_comm",
+      "score": 73,
+      "failures": [
+        "unsupported_score",
+        "communication_reasoning_conflation"
+      ]
+    },
+    {
+      "caseId": "CASE-06",
+      "caseName": "Weak prioritization",
+      "category": "weak_prioritization",
+      "score": 77,
+      "failures": [
+        "missed_probe"
+      ]
+    },
+    {
+      "caseId": "CASE-24",
+      "caseName": "Candidate uses unconventional framework",
+      "category": "unconventional_valid_framework",
+      "score": 82,
+      "failures": [
+        "unsupported_score",
+        "framework_keyword_bias"
+      ]
+    },
+    {
+      "caseId": "CASE-16",
+      "caseName": "Strong Product Sense",
+      "category": "strong_product_sense",
+      "score": 91,
+      "failures": [
+        "unsupported_score"
+      ]
+    },
+    {
+      "caseId": "CASE-20",
+      "caseName": "Strong communication but weak reasoning",
+      "category": "strong_comm_weak_reasoning",
+      "score": 91,
+      "failures": [
+        "communication_reasoning_conflation"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "id": "evalrun-1788849817641-CASE-01",
+      "evalCaseId": "CASE-01",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "ask_question",
+        "followUpQuestion": "Let's dive right in. Imagine you are the Product Manager for the buyer experience on a major e-commerce marketplace like Amazon or eBay, and we are seeing a steady 5% month-over-month decline in checkout conversion rates. How would you go about diagnosing and defining the core problem?",
+        "probeReason": "Starting the product sense case by testing the candidate's structured approach to problem diagnosis and scoping in an e-commerce context.",
+        "targetSignal": "clear_problem_definition",
+        "analysis": {
+          "detectedSignals": [
+            "enthusiasm",
+            "professional greeting"
+          ],
+          "potentialIssues": [
+            "none yet - interview just starting"
+          ],
+          "probeRecommended": false
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Good opening question."
+        },
+        {
+          "evalRunId": "run-1788849820127-CASE-01",
+          "evalCaseId": "CASE-01",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Good opening question."
+        }
+      ],
+      "latencyMs": 2453,
+      "tokenUsage": {
+        "promptTokens": 604,
+        "completionTokens": 172,
+        "totalTokens": 776
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:43:40.127Z"
+    },
+    {
+      "id": "evalrun-1788849825141-CASE-02",
+      "evalCaseId": "CASE-02",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "ask_follow_up",
+        "followUpQuestion": "How do you know that re-adding staple items from scratch is their primary blocker compared to, say, out-of-stock items or delivery scheduling issues?",
+        "probeReason": "The candidate made a specific behavioral claim without citing user research or data evidence.",
+        "targetSignal": "clear_problem_definition",
+        "analysis": {
+          "detectedSignals": [
+            "user_identification"
+          ],
+          "potentialIssues": [
+            "unsupported_assumption"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Relevant follow-up."
+        },
+        {
+          "evalRunId": "run-1788849826683-CASE-02",
+          "evalCaseId": "CASE-02",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Relevant follow-up."
+        }
+      ],
+      "latencyMs": 1539,
+      "tokenUsage": {
+        "promptTokens": 625,
+        "completionTokens": 142,
+        "totalTokens": 767
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:43:46.683Z"
+    },
+    {
+      "id": "evalrun-1788849831690-CASE-03",
+      "evalCaseId": "CASE-03",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "What specific customer data or retention problem suggests that a VR 3D avatar assistant playing trivia is the right solution, as opposed to addressing core pain points like wait times, pricing, or driver reliability?",
+        "probeReason": "The candidate jumped immediately to a complex, high-friction solution without establishing a clear problem or validating customer need.",
+        "targetSignal": "redirect_problem",
+        "analysis": {
+          "detectedSignals": [
+            "solution_first"
+          ],
+          "potentialIssues": [
+            "unsupported_assumptions",
+            "lack_of_customer_focus",
+            "high_complexity_solution"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Premature solution."
+        },
+        {
+          "evalRunId": "run-1788849833443-CASE-03",
+          "evalCaseId": "CASE-03",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Premature solution."
+        }
+      ],
+      "latencyMs": 1750,
+      "tokenUsage": {
+        "promptTokens": 590,
+        "completionTokens": 158,
+        "totalTokens": 748
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:43:53.443Z"
+    },
+    {
+      "id": "evalrun-1788849838452-CASE-04",
+      "evalCaseId": "CASE-04",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "Enabling this for all international traffic immediately without a staged rollout carries significant risk if bugs occur. How did you arrive at launching to 100% of international users right away, and what metrics will you monitor to catch issues early?",
+        "probeReason": "The candidate proposed a risky all-at-once rollout strategy without a phased approach or defined safety metrics.",
+        "targetSignal": "metric_definition",
+        "analysis": {
+          "detectedSignals": [
+            "has_launch_date"
+          ],
+          "potentialIssues": [
+            "lack_of_phased_rollout",
+            "missing_guardrail_metrics",
+            "unsupported_risk_tolerance"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Missing metric."
+        },
+        {
+          "evalRunId": "run-1788849840098-CASE-04",
+          "evalCaseId": "CASE-04",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Missing metric."
+        }
+      ],
+      "latencyMs": 1641,
+      "tokenUsage": {
+        "promptTokens": 593,
+        "completionTokens": 187,
+        "totalTokens": 780
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:00.098Z"
+    },
+    {
+      "id": "evalrun-1788849845107-CASE-05",
+      "evalCaseId": "CASE-05",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "What customer research or usage data supports the claim that B2B SaaS users have largely abandoned passwords and Google SSO in favor of Web3 crypto wallets?",
+        "probeReason": "The candidate made an extreme, ungrounded generalization about enterprise user behavior.",
+        "targetSignal": "challenge_assumption",
+        "analysis": {
+          "detectedSignals": [
+            "unsupported_assumption"
+          ],
+          "potentialIssues": [
+            "Lack of data backing",
+            "Ignoring standard B2B enterprise security requirements"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Unsupported assumption."
+        },
+        {
+          "evalRunId": "run-1788849846958-CASE-05",
+          "evalCaseId": "CASE-05",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Unsupported assumption."
+        }
+      ],
+      "latencyMs": 1848,
+      "tokenUsage": {
+        "promptTokens": 591,
+        "completionTokens": 149,
+        "totalTokens": 740
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:06.959Z"
+    },
+    {
+      "id": "evalrun-1788849851959-CASE-06",
+      "evalCaseId": "CASE-06",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "You've listed a wide variety of features ranging from dark mode to AI tutoring and VR lectures. How do you decide which one of these to actually build first, and what criteria are you using to make that choice?",
+        "probeReason": "Candidate provided an unprioritized laundry list of features without any rationale or selection criteria.",
+        "targetSignal": "prioritization",
+        "analysis": {
+          "detectedSignals": [
+            "brainstorming breadth"
+          ],
+          "potentialIssues": [
+            "laundry list generation",
+            "lack of focus",
+            "missing prioritization framework"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 1,
+        "probe_quality": 0,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [
+        "missed_probe"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "adaptiveness",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on adaptiveness for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "probe_quality",
+          "score": 0,
+          "maxScore": 2,
+          "pass": false,
+          "explanation": "Scored 0/2 on probe_quality for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Weak prioritization."
+        },
+        {
+          "evalRunId": "run-1788849853614-CASE-06",
+          "evalCaseId": "CASE-06",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Weak prioritization."
+        }
+      ],
+      "latencyMs": 1652,
+      "tokenUsage": {
+        "promptTokens": 597,
+        "completionTokens": 166,
+        "totalTokens": 763
+      },
+      "passed": false,
+      "normalizedScore": 77,
+      "createdAt": "2026-09-08T06:44:13.614Z"
+    },
+    {
+      "id": "evalrun-1788849858616-CASE-07",
+      "evalCaseId": "CASE-07",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "Enterprise procurement teams frequently push back on consumption-based overages because they make budgeting unpredictable. How do you defend the metered throughput component when a major prospect refuses variable costs?",
+        "probeReason": "Candidate proposed a hybrid metered model but dismissed the CFO predictability risk with a standard annual commit, which doesn't solve the core procurement objection for volatile enterprise workloads.",
+        "targetSignal": "tradeoff_reasoning",
+        "analysis": {
+          "detectedSignals": [
+            "value metric alignment",
+            "hybrid model",
+            "annual commit discounts"
+          ],
+          "potentialIssues": [
+            "Handwaves enterprise procurement resistance to variable consumption pricing",
+            "Lacks concrete mechanism for managing severe usage spikes without alienating customers"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Strong answer requiring deeper probing."
+        },
+        {
+          "evalRunId": "run-1788849860378-CASE-07",
+          "evalCaseId": "CASE-07",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Strong answer requiring deeper probing."
+        }
+      ],
+      "latencyMs": 1757,
+      "tokenUsage": {
+        "promptTokens": 656,
+        "completionTokens": 196,
+        "totalTokens": 852
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:20.378Z"
+    },
+    {
+      "id": "evalrun-1788849865384-CASE-08",
+      "evalCaseId": "CASE-08",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "request_clarification",
+        "followUpQuestion": "That just restates the definition of cart abandonment. What are the underlying behavioral or friction drivers causing them to leave?",
+        "probeReason": "The candidate is providing a circular definition rather than identifying root causes of the problem.",
+        "targetSignal": "clear_problem_definition",
+        "analysis": {
+          "detectedSignals": [
+            "circular_reasoning"
+          ],
+          "potentialIssues": [
+            "Fails to identify root causes",
+            "Restates the metric instead of diagnosing the problem"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Repetitive answer."
+        },
+        {
+          "evalRunId": "run-1788849866824-CASE-08",
+          "evalCaseId": "CASE-08",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Repetitive answer."
+        }
+      ],
+      "latencyMs": 1439,
+      "tokenUsage": {
+        "promptTokens": 658,
+        "completionTokens": 135,
+        "totalTokens": 793
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:26.824Z"
+    },
+    {
+      "id": "evalrun-1788849871825-CASE-09",
+      "evalCaseId": "CASE-09",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "That's a significant pivot from independent seniors. What specific quantitative data or behavioral evidence drove you to abandon the elderly segment in favor of tech-forward suburban homeowners?",
+        "probeReason": "Candidate abruptly changed target segments mid-interview; need to test if the pivot is backed by solid market sizing and data evidence or arbitrary shifting.",
+        "targetSignal": "tradeoff_reasoning",
+        "analysis": {
+          "detectedSignals": [
+            "user_identification"
+          ],
+          "potentialIssues": [
+            "unsupported_assumptions",
+            "changing_target_segment_without_deep_justification"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Candidate changes direction."
+        },
+        {
+          "evalRunId": "run-1788849873379-CASE-09",
+          "evalCaseId": "CASE-09",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Candidate changes direction."
+        }
+      ],
+      "latencyMs": 1551,
+      "tokenUsage": {
+        "promptTokens": 612,
+        "completionTokens": 171,
+        "totalTokens": 783
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:33.379Z"
+    },
+    {
+      "id": "evalrun-1788849878391-CASE-10",
+      "evalCaseId": "CASE-10",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "A moment ago you mentioned your priority was zero-commission growth to win supplier loyalty, but now you're proposing a 25% take rate. How do you reconcile that contradiction?",
+        "probeReason": "The candidate's current answer directly contradicts their stated guiding philosophy from the previous turn.",
+        "targetSignal": "tradeoff_reasoning",
+        "analysis": {
+          "detectedSignals": [
+            "monetization_focus"
+          ],
+          "potentialIssues": [
+            "contradictory_statements",
+            "lack_of_strategic_alignment"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Candidate contradicts previous answer."
+        },
+        {
+          "evalRunId": "run-1788849880358-CASE-10",
+          "evalCaseId": "CASE-10",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Candidate contradicts previous answer."
+        }
+      ],
+      "latencyMs": 1965,
+      "tokenUsage": {
+        "promptTokens": 662,
+        "completionTokens": 162,
+        "totalTokens": 824
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:40.358Z"
+    },
+    {
+      "id": "evalrun-1788849885372-CASE-11",
+      "evalCaseId": "CASE-11",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "You mentioned that the redesigned checkout workflow drove $50M in annual revenue. How did you isolate the impact of the checkout redesign from other macroeconomic factors or pricing changes happening simultaneously, and what was your specific role in that $50M figure?",
+        "probeReason": "The candidate dropped a large revenue metric without explaining attribution or their direct ownership versus team output.",
+        "targetSignal": "quantified_impact",
+        "analysis": {
+          "detectedSignals": [
+            "quantified_impact"
+          ],
+          "potentialIssues": [
+            "Unclear attribution of the $50M revenue metric",
+            "Lack of detail on individual contribution versus team output"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Resume-specific claim."
+        },
+        {
+          "evalRunId": "run-1788849887512-CASE-11",
+          "evalCaseId": "CASE-11",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Resume-specific claim."
+        }
+      ],
+      "latencyMs": 2137,
+      "tokenUsage": {
+        "promptTokens": 682,
+        "completionTokens": 181,
+        "totalTokens": 863
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:47.512Z"
+    },
+    {
+      "id": "evalrun-1788849892524-CASE-12",
+      "evalCaseId": "CASE-12",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "Asking engineering 'when they'll be done' rarely works for complex infrastructure migrations with strict latency SLAs. How do you track progress and manage dependencies if the infra team hits a roadblock two days before a planned cutover?",
+        "probeReason": "The candidate's approach is overly passive and lacks concrete milestone tracking, risk mitigation, or alignment with the specific high-throughput API constraints.",
+        "targetSignal": "risk_management",
+        "analysis": {
+          "detectedSignals": [
+            "passive_coordination"
+          ],
+          "potentialIssues": [
+            "Lack of proactive dependency management",
+            "No mention of handling latency SLAs or technical risk during migration"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for JD-specific competency."
+        },
+        {
+          "evalRunId": "run-1788849894180-CASE-12",
+          "evalCaseId": "CASE-12",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for JD-specific competency."
+        }
+      ],
+      "latencyMs": 1653,
+      "tokenUsage": {
+        "promptTokens": 633,
+        "completionTokens": 180,
+        "totalTokens": 813
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:44:54.180Z"
+    },
+    {
+      "id": "evalrun-1788849899183-CASE-13",
+      "evalCaseId": "CASE-13",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "challenge_assumption",
+        "followUpQuestion": "Lowering prices during bad weather would likely increase demand while supply drops due to drivers staying off the road. How would you manage that severe supply-demand imbalance, and what does the data tell you about price elasticity in those specific conditions?",
+        "probeReason": "The candidate offered a simplistic solution without considering the secondary effects on marketplace dynamics, specifically supply constraints during bad weather.",
+        "targetSignal": "tradeoff_reasoning",
+        "analysis": {
+          "detectedSignals": [
+            "simplistic_solution"
+          ],
+          "potentialIssues": [
+            "Fails to account for marketplace supply and demand dynamics",
+            "Ignores rider conversion vs. driver availability constraints"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 1,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "probe_quality",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on probe_quality for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Very short candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849901337-CASE-13",
+          "evalCaseId": "CASE-13",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Very short candidate answer."
+        }
+      ],
+      "latencyMs": 2152,
+      "tokenUsage": {
+        "promptTokens": 580,
+        "completionTokens": 183,
+        "totalTokens": 763
+      },
+      "passed": true,
+      "normalizedScore": 92,
+      "createdAt": "2026-09-08T06:45:01.337Z"
+    },
+    {
+      "id": "evalrun-1788849906342-CASE-14",
+      "evalCaseId": "CASE-14",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "request_clarification",
+        "followUpQuestion": "That was a lot of disparate details lumped together. Can you structure that response to give me a clear, step-by-step framework your team uses to evaluate and execute on international expansion?",
+        "probeReason": "The candidate gave a disorganized laundry list of anecdotes instead of a structured communication approach.",
+        "targetSignal": "structured_communication",
+        "analysis": {
+          "detectedSignals": [
+            "anecdotal_examples"
+          ],
+          "potentialIssues": [
+            "lack_of_structure",
+            "rambling",
+            "poor_communication_clarity"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 1,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "probe_quality",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on probe_quality for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Extremely long candidate answer."
+        },
+        {
+          "evalRunId": "run-1788849907890-CASE-14",
+          "evalCaseId": "CASE-14",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Extremely long candidate answer."
+        }
+      ],
+      "latencyMs": 1546,
+      "tokenUsage": {
+        "promptTokens": 658,
+        "completionTokens": 165,
+        "totalTokens": 823
+      },
+      "passed": true,
+      "normalizedScore": 92,
+      "createdAt": "2026-09-08T06:45:07.890Z"
+    },
+    {
+      "id": "evalrun-1788849912894-CASE-15",
+      "evalCaseId": "CASE-15",
+      "systemType": "interviewer",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "actionType": "wrap_up",
+        "followUpQuestion": "We are almost out of time, so to wrap this up, how would you measure the ROI of those guaranteed hourly floors, and what key guardrail metric would you watch to ensure we don't bleed money?",
+        "probeReason": "Time is running out (75 seconds remaining), requiring a quick wrap-up that tests financial tradeoffs and metric definition.",
+        "targetSignal": "time_management",
+        "analysis": {
+          "detectedSignals": [
+            "tactical_solution"
+          ],
+          "potentialIssues": [
+            "underspecified_solution",
+            "missing_financial_tradeoffs"
+          ],
+          "probeRecommended": true
+        }
+      },
+      "scores": {
+        "relevance": 2,
+        "adaptiveness": 2,
+        "probe_quality": 2,
+        "repetition": 1,
+        "difficulty_calibration": 2,
+        "plan_adherence": 2,
+        "pm_realism": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "relevance",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on relevance for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "adaptiveness",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on adaptiveness for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "probe_quality",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on probe_quality for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "repetition",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on repetition for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "difficulty_calibration",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on difficulty_calibration for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "plan_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on plan_adherence for Time running low."
+        },
+        {
+          "evalRunId": "run-1788849914344-CASE-15",
+          "evalCaseId": "CASE-15",
+          "metric": "pm_realism",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on pm_realism for Time running low."
+        }
+      ],
+      "latencyMs": 1446,
+      "tokenUsage": {
+        "promptTokens": 573,
+        "completionTokens": 170,
+        "totalTokens": 743
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:45:14.344Z"
+    },
+    {
+      "id": "evalrun-1788849919353-CASE-16",
+      "evalCaseId": "CASE-16",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849919354",
+        "overallScore": 55,
+        "recommendation": "developing",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Identified user cohorts and specific friction points."
+            ],
+            "weaknesses": [
+              "Response is extremely brief, preventing a deep assessment of full product sense depth."
+            ],
+            "evidence": [
+              {
+                "quote": "I segment shoppers into three distinct cohorts: 1) weekly meal planners, 2) spontaneous daily shoppers, and 3) deal hunters.",
+                "observation": "Candidate segmented the user base into clear groups.",
+                "implication": "Shows baseline product sense capability.",
+                "competency": "Product Sense",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Provide more comprehensive answers covering ideation and end-to-end user journeys."
+          },
+          {
+            "competency": "Strategy",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Demonstrated clear metric focus on repeat purchase retention and lifetime value."
+            ],
+            "weaknesses": [
+              "Lacks broader strategic market context or competitive analysis due to brevity."
+            ],
+            "evidence": [
+              {
+                "quote": "I prioritize weekly meal planners because they generate 65% of lifetime value but drop off due to the friction of re-adding staple groceries every Sunday.",
+                "observation": "Used quantitative reasoning to prioritize a high-value cohort.",
+                "implication": "Demonstrates solid strategic trade-off capability.",
+                "competency": "Strategy",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Expand on how strategic choices align with long-term company vision."
+          },
+          {
+            "competency": "Execution",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Identified clear trade-offs between feature sets."
+            ],
+            "weaknesses": [
+              "Did not discuss execution details such as milestones, timelines, or risk mitigation."
+            ],
+            "evidence": [
+              {
+                "quote": "The key trade-off is deprioritizing recipe inspiration features to double down on 1-click staple replenishment.",
+                "observation": "Made a decisive choice on feature prioritization and trade-offs.",
+                "implication": "Shows pragmatic execution thinking.",
+                "competency": "Execution",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Incorporate operational details and metrics tracking into execution plans."
+          },
+          {
+            "competency": "Analytics",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [
+              "Used metrics like repeat purchase retention and LTV percentage."
+            ],
+            "weaknesses": [
+              "Limited evidence of deeper analytical framework or experimentation design."
+            ],
+            "evidence": [
+              {
+                "quote": "Rather than building generic features, our goal is increasing repeat purchase retention.",
+                "observation": "Tied product goal directly to a retention metric.",
+                "implication": "Shows basic metrics alignment.",
+                "competency": "Analytics",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Elaborate on how success will be measured post-launch and how hypotheses will be tested."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral or leadership scenarios were addressed in the transcript."
+            ],
+            "evidence": [],
+            "recommendation": "Provide examples showcasing stakeholder management and conflict resolution."
+          },
+          {
+            "competency": "Communication",
+            "score": 3,
+            "confidence": "medium",
+            "strengths": [
+              "Structured the short response logically with clear segmentation and prioritization."
+            ],
+            "weaknesses": [
+              "Too brief to fully assess communication breadth."
+            ],
+            "evidence": [
+              {
+                "quote": "Let's clarify the core problem and objective first.",
+                "observation": "Started with problem clarification.",
+                "implication": "Demonstrates structured communication habit.",
+                "competency": "Communication",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Expand answers with more contextual detail while maintaining structure."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "The transcript is limited to a single short answer, resulting in low confidence and insufficient evidence across multiple competencies.",
+          "Lacks coverage of Leadership, Analytics depth, and Execution operations."
+        ],
+        "priorityImprovements": [
+          "Provide more comprehensive, multi-part answers during product case interviews.",
+          "Ensure deeper coverage of execution details, metrics, and behavioral experiences."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice full-length PM case responses covering problem scoping, user segmentation, strategy, and execution."
+        ],
+        "interviewId": "int-16",
+        "generatedAt": "2026-09-08T06:45:23.969Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-16"
+        }
+      },
+      "scores": {
+        "score_validity": 1,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [
+        "unsupported_score"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "score_validity",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on score_validity for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Strong Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849923969-CASE-16",
+          "evalCaseId": "CASE-16",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Strong Product Sense."
+        }
+      ],
+      "latencyMs": 4613,
+      "tokenUsage": {
+        "promptTokens": 802,
+        "completionTokens": 1229,
+        "totalTokens": 2031
+      },
+      "passed": false,
+      "normalizedScore": 91,
+      "createdAt": "2026-09-08T06:45:23.970Z"
+    },
+    {
+      "id": "evalrun-1788849928981-CASE-17",
+      "evalCaseId": "CASE-17",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849928982",
+        "overallScore": 15,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Jumps straight to a specific feature solution without identifying user segments, pain points, or use cases.",
+              "Proposes complex and potentially gimmicky technology (AI assistant with 3D animations) without validating user needs."
+            ],
+            "evidence": [
+              {
+                "quote": "We should immediately build an AI assistant with 3D animations that talks to users while they shop.",
+                "observation": "Proposes a complex feature solution immediately without context or problem definition.",
+                "implication": "Demonstrates a complete lack of foundational product sense and user-centric problem exploration.",
+                "competency": "Product Sense",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Learn to start with user identification, pain point analysis, and problem exploration before jumping to feature solutions."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Fails to address scoping, prioritization, trade-offs, or feasibility."
+            ],
+            "evidence": [
+              {
+                "quote": "We should immediately build an AI assistant with 3D animations that talks to users while they shop.",
+                "observation": "Calls for immediate building of a complex solution without discussing scoping or execution steps.",
+                "implication": "Shows insufficient evidence of structured execution planning.",
+                "competency": "Execution",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Practice scoping features, defining MVP requirements, and considering implementation trade-offs."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Does not mention metrics, success criteria, or data-driven evaluation.",
+              "Lacks any analytical reasoning."
+            ],
+            "evidence": [],
+            "recommendation": "Incorporate goal setting, key performance indicators, and metric tracking into product proposals."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Ignores business goals, market context, competitive landscape, or strategic alignment."
+            ],
+            "evidence": [],
+            "recommendation": "Connect product decisions to broader company strategy, monetization, and long-term vision."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Insufficient response length and lack of behavioral or leadership context provided."
+            ],
+            "evidence": [],
+            "recommendation": "Prepare structured examples demonstrating cross-functional leadership, conflict resolution, and decision-making."
+          },
+          {
+            "competency": "Communication",
+            "score": 2,
+            "confidence": "high",
+            "strengths": [
+              "Clear and concise sentence structure."
+            ],
+            "weaknesses": [
+              "Extremely brief response that fails to elaborate or structure a complete thought process."
+            ],
+            "evidence": [
+              {
+                "quote": "We should immediately build an AI assistant with 3D animations that talks to users while they shop.",
+                "observation": "Provides a single-sentence answer.",
+                "implication": "Limits the depth of communication and structured storytelling expected in a PM interview.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Practice structuring answers with clear agendas, logical flow, and comprehensive explanations."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Candidate response is extremely brief and only consists of one sentence.",
+          "Jumps directly to a complex feature solution without user research, problem framing, or business justification.",
+          "Lacks coverage across core PM competencies such as analytics, strategy, and execution."
+        ],
+        "priorityImprovements": [
+          "Adopt a structured problem-solving framework (e.g., clarifying goals, identifying user segments, exploring pain points, and brainstorming solutions before prioritizing).",
+          "Ensure comprehensive answers that address user value, technical feasibility, and business impact.",
+          "Incorporate data and metrics into product proposals."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice open-ended product design questions focusing heavily on user empathy and problem identification.",
+          "Review standard product management case interview structures."
+        ],
+        "interviewId": "int-17",
+        "generatedAt": "2026-09-08T06:45:33.311Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-17"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Weak Product Sense."
+        },
+        {
+          "evalRunId": "run-1788849933311-CASE-17",
+          "evalCaseId": "CASE-17",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Weak Product Sense."
+        }
+      ],
+      "latencyMs": 4327,
+      "tokenUsage": {
+        "promptTokens": 713,
+        "completionTokens": 1146,
+        "totalTokens": 1859
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:45:33.311Z"
+    },
+    {
+      "id": "evalrun-1788849938316-CASE-18",
+      "evalCaseId": "CASE-18",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849938317",
+        "overallScore": 85,
+        "recommendation": "meets_expectations",
+        "competencyEvaluations": [
+          {
+            "competency": "Analytics",
+            "score": 5,
+            "confidence": "high",
+            "strengths": [
+              "Systematically decomposes high-level metrics into funnel stages",
+              "Segments data across meaningful dimensions like platform, geography, and payment processor"
+            ],
+            "weaknesses": [
+              "Relies on a single-turn answer, so breadth across other areas is untested"
+            ],
+            "evidence": [
+              {
+                "quote": "To diagnose the 10% drop in checkout conversion rate, I would systematically decompose the metric into its underlying funnel stages: cart page views, shipping entry, payment authorization, and order confirmation.",
+                "observation": "Candidate breaks down a complex drop in conversion rate into granular funnel steps.",
+                "implication": "Shows strong analytical breakdown skills and metric decomposition capability.",
+                "competency": "Analytics",
+                "signalType": "strength"
+              },
+              {
+                "quote": "Next, I segment the drop across dimensions: platform (iOS vs Android), geography, and payment processor.",
+                "observation": "Candidate identifies relevant slicing dimensions for root cause analysis.",
+                "implication": "Demonstrates methodical approach to isolating anomalies in data.",
+                "competency": "Analytics",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Continue applying rigorous funnel decomposition and data segmentation in metric troubleshooting."
+          },
+          {
+            "competency": "Execution",
+            "score": 4,
+            "confidence": "medium",
+            "strengths": [
+              "Forms a clear, testable hypothesis about API latency and payment methods",
+              "Includes a concrete mitigation path involving telemetry verification and rollback"
+            ],
+            "weaknesses": [
+              "Limited to a brief diagnostic scenario"
+            ],
+            "evidence": [
+              {
+                "quote": "My hypothesis is that a recent mobile release caused an API authorization latency regression for European debit cards. I will verify telemetry logs against this threshold before deploying an automated rollback.",
+                "observation": "Candidate proposes a specific root cause and a clear action plan including verification and rollback.",
+                "implication": "Demonstrates practical execution and risk management mindset.",
+                "competency": "Execution",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Maintain this action-oriented, hypothesis-driven approach when dealing with production incidents."
+          },
+          {
+            "competency": "Product Sense",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Understands standard checkout flow stages"
+            ],
+            "weaknesses": [
+              "Insufficient evidence provided to fully assess product sense beyond a metric diagnostic context"
+            ],
+            "evidence": [
+              {
+                "quote": "To diagnose the 10% drop in checkout conversion rate, I would systematically decompose the metric into its underlying funnel stages: cart page views, shipping entry, payment authorization, and order confirmation.",
+                "observation": "Mentions standard checkout funnel stages.",
+                "implication": "Shows basic familiarity with user flows, but product design or ideation was not tested.",
+                "competency": "Product Sense",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Practice user-centric design and feature ideation exercises to build broader product sense."
+          },
+          {
+            "competency": "Strategy",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No long-term strategic thinking or market analysis evaluated in this short transcript"
+            ],
+            "evidence": [
+              {
+                "quote": "To diagnose the 10% drop in checkout conversion rate, I would systematically decompose the metric into its underlying funnel stages: cart page views, shipping entry, payment authorization, and order confirmation.",
+                "observation": "Focus is purely tactical on metric troubleshooting.",
+                "implication": "Evidence for strategic thinking is absent from the provided text.",
+                "competency": "Strategy",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Incorporate long-term product vision, market positioning, and trade-off analysis in future evaluations."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral or cross-functional leadership scenarios covered"
+            ],
+            "evidence": [
+              {
+                "quote": "I will verify telemetry logs against this threshold before deploying an automated rollback.",
+                "observation": "Focuses on individual technical verification rather than team leadership or stakeholder management.",
+                "implication": "Leadership and behavioral competencies could not be assessed from this response.",
+                "competency": "Leadership & Behavioral",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Incorporate examples of cross-functional collaboration, conflict resolution, and stakeholder influence."
+          },
+          {
+            "competency": "Communication",
+            "score": 4,
+            "confidence": "high",
+            "strengths": [
+              "Concise, structured, and easy-to-follow delivery",
+              "Uses clear sequencing language"
+            ],
+            "weaknesses": [
+              "Very brief response limits evaluation of conversational depth"
+            ],
+            "evidence": [
+              {
+                "quote": "To diagnose the 10% drop in checkout conversion rate, I would systematically decompose the metric into its underlying funnel stages: cart page views, shipping entry, payment authorization, and order confirmation. Next, I segment the drop across dimensions: platform (iOS vs Android), geography, and payment processor.",
+                "observation": "Uses clear transitional phrases and structured enumeration.",
+                "implication": "Conveys complex analytical steps with high clarity.",
+                "competency": "Communication",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Maintain structured communication while ensuring adequate depth on broader PM topics."
+          }
+        ],
+        "overallStrengths": [
+          "Demonstrates structured metric decomposition and root-cause analysis",
+          "Forms clear, actionable hypotheses and remediation plans"
+        ],
+        "overallWeaknesses": [
+          "Response is limited to a single tactical scenario, leaving strategy, product sense, and leadership largely untested"
+        ],
+        "priorityImprovements": [
+          "Broaden competency demonstrations to include product design, long-term strategy, and behavioral leadership",
+          "Provide deeper context in end-to-end product problem solving"
+        ],
+        "nextPracticeRecommendations": [
+          "Practice open-ended product design and metric ambiguity cases with comprehensive multi-turn responses"
+        ],
+        "interviewId": "int-18",
+        "generatedAt": "2026-09-08T06:45:43.834Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-18"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Strong Analytics."
+        },
+        {
+          "evalRunId": "run-1788849943834-CASE-18",
+          "evalCaseId": "CASE-18",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Strong Analytics."
+        }
+      ],
+      "latencyMs": 5514,
+      "tokenUsage": {
+        "promptTokens": 786,
+        "completionTokens": 1595,
+        "totalTokens": 2381
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:45:43.834Z"
+    },
+    {
+      "id": "evalrun-1788849948848-CASE-19",
+      "evalCaseId": "CASE-19",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849948849",
+        "overallScore": 10,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Extremely vague goal statement lacking target user segments, use cases, or specific product features."
+            ],
+            "evidence": [
+              {
+                "quote": "We just want to improve engagement and make users happy with a better experience so our brand will grow.",
+                "observation": "The candidate provides a generic, cliché business objective without defining who the users are, what problem is being solved, or how engagement will be driven.",
+                "implication": "Demonstrates a complete lack of product sense and structured problem decomposition.",
+                "competency": "Product Sense",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Learn how to structure product sense questions by identifying target user groups, exploring their pain points, and proposing tailored solutions."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No evidence of execution, prioritization, scoping, or metric definition provided in the transcript."
+            ],
+            "evidence": [],
+            "recommendation": "Focus on defining clear execution plans, roadmaps, and prioritizing initiatives using sound frameworks."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Fails to mention any quantitative metrics, key performance indicators, or methods of measuring success."
+            ],
+            "evidence": [],
+            "recommendation": "Learn how to define primary success metrics, guardrail metrics, and instrument tracking for new product features."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No long-term strategic thinking, market analysis, or competitive positioning discussed."
+            ],
+            "evidence": [],
+            "recommendation": "Develop strategic frameworks to align product initiatives with overarching company goals and market trends."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral examples or leadership scenarios addressed."
+            ],
+            "evidence": [],
+            "recommendation": "Prepare structured behavioral stories using the STAR method to demonstrate cross-functional leadership and conflict resolution."
+          },
+          {
+            "competency": "Communication",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Answer is overly brief, lacking structure, depth, and clarity.",
+              "Relies on vague corporate buzzwords rather than structured communication."
+            ],
+            "evidence": [
+              {
+                "quote": "We just want to improve engagement and make users happy with a better experience so our brand will grow.",
+                "observation": "Single sentence response offering no structure or detail.",
+                "implication": "Fails to communicate complex ideas clearly and professionally.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Practice structuring answers with a clear agenda, logical transitions, and detailed explanations."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "The candidate provided a single, highly vague sentence as their entire response, lacking substance across all PM competencies.",
+          "Complete absence of product sense, execution, metrics, and strategic reasoning."
+        ],
+        "priorityImprovements": [
+          "Learn foundational product management interview structures and frameworks.",
+          "Provide comprehensive, detailed answers rather than one-sentence clichés.",
+          "Practice articulating user problems, metrics, and solutions clearly."
+        ],
+        "nextPracticeRecommendations": [
+          "Conduct mock interviews focusing on Product Sense and structuring problem statements.",
+          "Review sample PM interview transcripts to understand the expected depth and rigor."
+        ],
+        "interviewId": "int-19",
+        "generatedAt": "2026-09-08T06:45:52.717Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-19"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Weak Analytics."
+        },
+        {
+          "evalRunId": "run-1788849952718-CASE-19",
+          "evalCaseId": "CASE-19",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Weak Analytics."
+        }
+      ],
+      "latencyMs": 3867,
+      "tokenUsage": {
+        "promptTokens": 713,
+        "completionTokens": 1006,
+        "totalTokens": 1719
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:45:52.718Z"
+    },
+    {
+      "id": "evalrun-1788849957721-CASE-20",
+      "evalCaseId": "CASE-20",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849957723",
+        "overallScore": 15,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Fails to identify user needs, target segments, or value propositions.",
+              "Superficial conclusion to build everything without prioritization."
+            ],
+            "evidence": [
+              {
+                "quote": "we should build both feature A and feature B because they are both nice.",
+                "observation": "Proposes building features simply because they are 'nice' without any user context or problem definition.",
+                "implication": "Demonstrates a complete lack of product sense, user empathy, and prioritization ability.",
+                "competency": "Product Sense",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Learn how to define target users, understand user pain points, and prioritize features based on value rather than building everything."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Lacks any concrete planning, scoping, trade-off analysis, or milestone breakdown.",
+              "Arbitrary timeline statement without dependency or resource analysis."
+            ],
+            "evidence": [
+              {
+                "quote": "our team will launch them next month.",
+                "observation": "States an arbitrary launch date without any execution details, scoping, or risk assessment.",
+                "implication": "Shows an absence of practical execution planning and engineering awareness.",
+                "competency": "Execution",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Practice breaking down features into MVPs, identifying dependencies, managing risks, and defining realistic roadmaps."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Fails to mention metrics, success criteria, data analysis, or evaluation mechanisms."
+            ],
+            "evidence": [
+              {
+                "quote": "we should build both feature A and feature B because they are both nice.",
+                "observation": "Relies entirely on subjective terms ('nice') rather than data or metrics to justify decisions.",
+                "implication": "Highlights a complete absence of analytical rigor.",
+                "competency": "Analytics",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Incorporate key performance indicators (KPIs), metric trees, and data-driven decision-making into product problem-solving."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No connection to company vision, market landscape, competitive advantage, or long-term goals."
+            ],
+            "evidence": [
+              {
+                "quote": "we should build both feature A and feature B because they are both nice.",
+                "observation": "Treats feature selection as an isolated choice disconnected from any broader strategic vision.",
+                "implication": "Fails to demonstrate strategic thinking or long-term product vision.",
+                "competency": "Strategy",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Study frameworks for linking product features to business goals, competitive positioning, and market trends."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral scenario was presented or addressed.",
+              "Insufficient evidence to evaluate leadership capabilities."
+            ],
+            "evidence": [
+              {
+                "quote": "our team will launch them next month.",
+                "observation": "Passively mentions the team without discussing cross-functional collaboration, influence, or leadership challenges.",
+                "implication": "Provides no positive signal regarding leadership or behavioral competence.",
+                "competency": "Leadership & Behavioral",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Prepare structured behavioral stories using the STAR method highlighting influence without authority, conflict resolution, and leadership."
+          },
+          {
+            "competency": "Communication",
+            "score": 2,
+            "confidence": "high",
+            "strengths": [
+              "Uses structural signposts to organize the response."
+            ],
+            "weaknesses": [
+              "Structure is superficial, relying on meta-language rather than substantive logical flow."
+            ],
+            "evidence": [
+              {
+                "quote": "First, I would like to structure my answer clearly. Second, in summary, we should build both feature A and feature B because they are both nice. Third, in conclusion, our team will launch them next month.",
+                "observation": "Uses transition words mechanically without delivering underlying content or substance.",
+                "implication": "Communication is overly formulaic and lacks depth, failing to persuade an audience.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Focus on delivering clear, substantive arguments rather than relying solely on surface-level structural phrases."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Completely lacks substance, product reasoning, metrics, and strategy.",
+          "Relies on superficial meta-language and structural phrases instead of actual problem-solving.",
+          "Fails to prioritize, proposing to build everything simply because features are 'nice'."
+        ],
+        "priorityImprovements": [
+          "Learn core product management frameworks for problem-solving, user segmentation, and feature prioritization.",
+          "Integrate data analysis and success metrics into every product recommendation.",
+          "Develop strategic depth by connecting feature choices to broader business goals."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice mock product design interviews focusing on depth, user empathy, and trade-offs rather than generic templates.",
+          "Review case studies on how top-tier product teams prioritize roadmaps under resource constraints."
+        ],
+        "interviewId": "int-20",
+        "generatedAt": "2026-09-08T06:46:03.212Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-20"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 0,
+        "consistency": 2
+      },
+      "failures": [
+        "communication_reasoning_conflation"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "communication_separation",
+          "score": 0,
+          "maxScore": 1,
+          "pass": false,
+          "explanation": "Scored 0/1 on communication_separation for Strong communication but weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788849963212-CASE-20",
+          "evalCaseId": "CASE-20",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Strong communication but weak reasoning."
+        }
+      ],
+      "latencyMs": 5485,
+      "tokenUsage": {
+        "promptTokens": 737,
+        "completionTokens": 1456,
+        "totalTokens": 2193
+      },
+      "passed": false,
+      "normalizedScore": 91,
+      "createdAt": "2026-09-08T06:46:03.212Z"
+    },
+    {
+      "id": "evalrun-1788849968219-CASE-21",
+      "evalCaseId": "CASE-21",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849968220",
+        "overallScore": 35,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 2,
+            "confidence": "medium",
+            "strengths": [
+              "Identified guest checkout shoppers and first-time user drop-off."
+            ],
+            "weaknesses": [
+              "Ran together multiple distinct product problems into a single unstructured sentence.",
+              "Lacks clear user journey exploration or identification of underlying user needs."
+            ],
+            "evidence": [
+              {
+                "quote": "first-time users drop off when asked for a password",
+                "observation": "Identified a specific friction point in guest checkout.",
+                "implication": "Shows basic awareness of conversion bottlenecks.",
+                "competency": "Product Sense",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Practice structuring product sense questions by clearly identifying user segments, pain points, and potential solutions sequentially."
+          },
+          {
+            "competency": "Execution",
+            "score": 2,
+            "confidence": "medium",
+            "strengths": [
+              "Mentioned prioritizing 1-click checkout and considering tradeoffs like fraud checks."
+            ],
+            "weaknesses": [
+              "Failed to provide a systematic prioritization framework or clear execution plan.",
+              "Handled complex constraints like engineering capacity and fraud superficially."
+            ],
+            "evidence": [
+              {
+                "quote": "we need to prioritize 1-click checkout for guests while deprioritizing social login, and also there is a huge tradeoff with fraud where we sacrifice some fraud checks on orders under $50 to increase conversion",
+                "observation": "Attempted to weigh conversion against risk and feature prioritization.",
+                "implication": "Shows an instinct for prioritization tradeoffs, but lacks structured analytical depth.",
+                "competency": "Execution",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Develop a structured approach to prioritization, explicitly weighing impact, effort, risk, and feasibility."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No metrics, data points, or quantitative frameworks mentioned.",
+              "Mentioned drop-offs and repeat buyers qualitatively without defining measurement criteria."
+            ],
+            "evidence": [
+              {
+                "quote": "repeat buyers behave totally differently so we must segment them",
+                "observation": "Noted behavioral differences among segments.",
+                "implication": "Lacks specific metrics or data-driven definitions to back up the assertion.",
+                "competency": "Analytics",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Incorporate key performance indicators (KPIs) and metric definitions when discussing product performance and user segments."
+          },
+          {
+            "competency": "Strategy",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [
+              "Recognized user segmentation and overarching business tradeoffs."
+            ],
+            "weaknesses": [
+              "Lacks long-term strategic vision or alignment with business goals.",
+              "Stitched tactical decisions together without a cohesive strategic narrative."
+            ],
+            "evidence": [
+              {
+                "quote": "repeat buyers behave totally differently so we must segment them",
+                "observation": "Recognized the need for segmentation.",
+                "implication": "Demonstrates rudimentary strategic thinking regarding customer cohorts.",
+                "competency": "Strategy",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Connect tactical product changes back to broader company goals and long-term product strategy."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 2,
+            "confidence": "low",
+            "strengths": [
+              "Acknowledged the need to coordinate with payments and engineering."
+            ],
+            "weaknesses": [
+              "Did not demonstrate cross-functional leadership, conflict resolution, or stakeholder management depth.",
+              "Mentioned coordination as an afterthought in a run-on sentence."
+            ],
+            "evidence": [
+              {
+                "quote": "we also have to coordinate with payments and also another thing is engineering capacity",
+                "observation": "Noted dependency on engineering and payments.",
+                "implication": "Shows awareness of cross-functional constraints but lacks detail on leadership approach.",
+                "competency": "Leadership & Behavioral",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Provide concrete examples of how you lead cross-functional teams and manage stakeholder dependencies."
+          },
+          {
+            "competency": "Communication",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Delivered a single, massive run-on sentence connected by repeated use of 'and also'.",
+              "Lacked basic organization, pausing, and structural signposts."
+            ],
+            "evidence": [
+              {
+                "quote": "So um basically the problem is really deep with guest checkout shoppers because first-time users drop off when asked for a password, also another thing is shipping costs and we also noticed that repeat buyers behave totally differently so we must segment them, and also we need to prioritize 1-click checkout for guests while deprioritizing social login, and also there is a huge tradeoff with fraud where we sacrifice some fraud checks on orders under $50 to increase conversion, and another thing is we also have to coordinate with payments and also another thing is engineering capacity...",
+                "observation": "The entire response is a single, unstructured run-on sentence packed with filler words and 'also'.",
+                "implication": "Severely hinders readability, comprehension, and professional impact.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Practice structuring answers with clear headings, pauses, and bullet points to avoid run-on sentences and improve clarity."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Extremely poor communication structure, consisting of a single run-on sentence with excessive use of 'and also'.",
+          "Lack of analytical rigor and metric definition.",
+          "Superficial handling of execution tradeoffs and cross-functional coordination."
+        ],
+        "priorityImprovements": [
+          "Break down responses into structured, digestible parts rather than continuous run-on sentences.",
+          "Incorporate quantitative metrics and data points into problem-solving.",
+          "Clearly separate user problems, prioritization, tradeoffs, and cross-functional execution."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice mock interviews focusing specifically on delivery structure and pacing.",
+          "Work on structuring product case studies from problem identification to execution and metrics."
+        ],
+        "interviewId": "int-21",
+        "generatedAt": "2026-09-08T06:46:14.456Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-21"
+        }
+      },
+      "scores": {
+        "score_validity": 0,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 0,
+        "consistency": 2
+      },
+      "failures": [
+        "unsupported_score",
+        "communication_reasoning_conflation"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "score_validity",
+          "score": 0,
+          "maxScore": 2,
+          "pass": false,
+          "explanation": "Scored 0/2 on score_validity for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "communication_separation",
+          "score": 0,
+          "maxScore": 1,
+          "pass": false,
+          "explanation": "Scored 0/1 on communication_separation for Strong reasoning but weak communication."
+        },
+        {
+          "evalRunId": "run-1788849974457-CASE-21",
+          "evalCaseId": "CASE-21",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Strong reasoning but weak communication."
+        }
+      ],
+      "latencyMs": 6235,
+      "tokenUsage": {
+        "promptTokens": 805,
+        "completionTokens": 1601,
+        "totalTokens": 2406
+      },
+      "passed": false,
+      "normalizedScore": 73,
+      "createdAt": "2026-09-08T06:46:14.457Z"
+    },
+    {
+      "id": "evalrun-1788849979469-CASE-22",
+      "evalCaseId": "CASE-22",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849979470",
+        "overallScore": 5,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Candidate provided no substantive answer, only a single agreement statement."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "Candidate gave a minimal agreement statement without any product context or reasoning.",
+                "implication": "Fails to demonstrate product sense, user empathy, or structured thinking.",
+                "competency": "Product Sense",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Provide comprehensive answers that address the core product problem, target audience, and user needs."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No evidence of execution, roadmap planning, prioritization, or trade-off analysis."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "No execution details or problem-solving steps were provided.",
+                "implication": "Lacks evidence of ability to scope, build, or deliver products.",
+                "competency": "Execution",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Demonstrate structured execution by breaking down projects, defining milestones, and discussing trade-offs."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No metrics, data evaluation, or analytical reasoning provided."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "No mention of data, metrics, or evaluation criteria.",
+                "implication": "Cannot assess analytical capabilities based on the response.",
+                "competency": "Analytics",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Discuss key performance indicators, success metrics, and how to measure product impact."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No strategic vision, market analysis, or long-term planning discussed."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "No strategic framework or business context provided.",
+                "implication": "Does not showcase high-level product strategy or market understanding.",
+                "competency": "Strategy",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Incorporate business goals, competitive landscape, and long-term vision into your answers."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral examples or leadership scenarios demonstrated."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "Response lacks any personal narrative, stakeholder management, or conflict resolution.",
+                "implication": "Insufficient evidence to evaluate leadership or interpersonal skills.",
+                "competency": "Leadership & Behavioral",
+                "signalType": "missing_signal"
+              }
+            ],
+            "recommendation": "Use the STAR method to describe past leadership experiences, cross-functional collaboration, and overcoming challenges."
+          },
+          {
+            "competency": "Communication",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Response is overly brief and lacks clarity, structure, and detail."
+            ],
+            "evidence": [
+              {
+                "quote": "Yes, I agree with that.",
+                "observation": "Extremely concise response that fails to communicate any structured thoughts.",
+                "implication": "Fails to meet basic standards of professional and clear interview communication.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Elaborate fully on your thoughts, using structured frameworks and clear transitions to articulate your points."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "The candidate provided an extremely minimal response (\"Yes, I agree with that.\") containing zero substance across all evaluated PM competencies."
+        ],
+        "priorityImprovements": [
+          "Provide detailed, structured, and comprehensive answers to interview questions.",
+          "Address all parts of the prompt rather than giving one-sentence agreements.",
+          "Demonstrate core PM competencies including product sense, execution, analytics, and strategy."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice mock interviews focusing on open-ended product design and strategy questions.",
+          "Review structured problem-solving techniques for product management interviews."
+        ],
+        "interviewId": "int-22",
+        "generatedAt": "2026-09-08T06:46:24.080Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-22"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 0,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [
+        "insufficient_evidence_ignored"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "insufficient_evidence_handling",
+          "score": 0,
+          "maxScore": 1,
+          "pass": false,
+          "explanation": "Scored 0/1 on insufficient_evidence_handling for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Insufficient evidence."
+        },
+        {
+          "evalRunId": "run-1788849984081-CASE-22",
+          "evalCaseId": "CASE-22",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Insufficient evidence."
+        }
+      ],
+      "latencyMs": 4609,
+      "tokenUsage": {
+        "promptTokens": 700,
+        "completionTokens": 1244,
+        "totalTokens": 1944
+      },
+      "passed": false,
+      "normalizedScore": 91,
+      "createdAt": "2026-09-08T06:46:24.081Z"
+    },
+    {
+      "id": "evalrun-1788849989094-CASE-23",
+      "evalCaseId": "CASE-23",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849989095",
+        "overallScore": 5,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Direct contradiction between statements.",
+              "Lack of logical foundation or customer empathy."
+            ],
+            "evidence": [
+              {
+                "quote": "We will strictly maintain zero commissions to maximize merchant acquisition and beat Shopify.",
+                "observation": "States a strategy of zero commissions to beat competitors.",
+                "implication": "Demonstrates a rigid approach without balancing business sustainability.",
+                "competency": "Product Sense",
+                "signalType": "weakness"
+              },
+              {
+                "quote": "We will implement an aggressive 20% commission on all merchant transactions starting next month.",
+                "observation": "Directly contradicts the first statement by proposing a high commission.",
+                "implication": "Shows severe internal contradiction and lack of coherent strategic product sense.",
+                "competency": "Product Sense",
+                "signalType": "contradiction"
+              }
+            ],
+            "recommendation": "Provide coherent, well-reasoned product strategies without contradicting prior statements."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Unrealistic operational swings without rationale."
+            ],
+            "evidence": [
+              {
+                "quote": "We will implement an aggressive 20% commission on all merchant transactions starting next month.",
+                "observation": "Abruptly introduces a major business model change without execution planning.",
+                "implication": "Fails to demonstrate structured execution capability.",
+                "competency": "Execution",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Incorporate operational sequencing and impact analysis into execution plans."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No data, metrics, or quantitative reasoning provided."
+            ],
+            "evidence": [],
+            "recommendation": "Incorporate data-driven metrics to back up business model decisions."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Flips core business model strategy entirely between sentences."
+            ],
+            "evidence": [
+              {
+                "quote": "We will strictly maintain zero commissions to maximize merchant acquisition and beat Shopify.",
+                "observation": "Defines a growth-focused monetization strategy.",
+                "implication": "Contradicted immediately by the subsequent statement.",
+                "competency": "Strategy",
+                "signalType": "weakness"
+              },
+              {
+                "quote": "We will implement an aggressive 20% commission on all merchant transactions starting next month.",
+                "observation": "Shifts entirely to revenue extraction.",
+                "implication": "Destroys the previously stated acquisition strategy, showing lack of strategic alignment.",
+                "competency": "Strategy",
+                "signalType": "contradiction"
+              }
+            ],
+            "recommendation": "Develop long-term strategic coherence that balances growth and monetization."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Insufficient behavioral evidence provided."
+            ],
+            "evidence": [],
+            "recommendation": "Provide examples of leadership and decision-making under ambiguity."
+          },
+          {
+            "competency": "Communication",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Confusing and mutually exclusive statements presented sequentially."
+            ],
+            "evidence": [
+              {
+                "quote": "We will strictly maintain zero commissions to maximize merchant acquisition and beat Shopify.",
+                "observation": "First premise stated definitively.",
+                "implication": "Followed by a complete contradiction.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              },
+              {
+                "quote": "We will implement an aggressive 20% commission on all merchant transactions starting next month.",
+                "observation": "Second premise contradicts the first.",
+                "implication": "Creates total confusion regarding the product direction.",
+                "competency": "Communication",
+                "signalType": "contradiction"
+              }
+            ],
+            "recommendation": "Ensure clear, consistent communication of product goals and business models."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Severe direct contradictions between statements.",
+          "Complete lack of structural depth, analytics, and strategic reasoning.",
+          "Extremely minimal transcript data."
+        ],
+        "priorityImprovements": [
+          "Avoid self-contradictory statements in product arguments.",
+          "Build comprehensive answers incorporating strategy, execution, and metrics.",
+          "Provide clear rationale for business model decisions."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice structured monetization case studies.",
+          "Review foundational PM frameworks for product strategy and business models."
+        ],
+        "interviewId": "int-23",
+        "generatedAt": "2026-09-08T06:46:33.708Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-23"
+        }
+      },
+      "scores": {
+        "score_validity": 1,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [
+        "unsupported_score"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "score_validity",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on score_validity for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Contradictory answers."
+        },
+        {
+          "evalRunId": "run-1788849993708-CASE-23",
+          "evalCaseId": "CASE-23",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Contradictory answers."
+        }
+      ],
+      "latencyMs": 4611,
+      "tokenUsage": {
+        "promptTokens": 735,
+        "completionTokens": 1276,
+        "totalTokens": 2011
+      },
+      "passed": false,
+      "normalizedScore": 91,
+      "createdAt": "2026-09-08T06:46:33.708Z"
+    },
+    {
+      "id": "evalrun-1788849998718-CASE-24",
+      "evalCaseId": "CASE-24",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788849998718",
+        "overallScore": 55,
+        "recommendation": "developing",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Uses a creative analogy to explain user onboarding friction."
+            ],
+            "weaknesses": [
+              "Lacks full product definition, user segmentation, and needs discovery."
+            ],
+            "evidence": [
+              {
+                "quote": "Friction represents cognitive onboarding load for terminal users.",
+                "observation": "Identifies onboarding load for developers using terminal tools.",
+                "implication": "Shows basic product sense for developer tools, but remains overly conceptual.",
+                "competency": "Product Sense",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Expand beyond analogies to cover concrete user pain points and structured feature ideation."
+          },
+          {
+            "competency": "Execution",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Prioritizes lowering friction via a specific tactical action (1-command CLI login)."
+            ],
+            "weaknesses": [
+              "No mention of roadmapping, trade-offs, or execution metrics."
+            ],
+            "evidence": [
+              {
+                "quote": "We must reduce Friction by offering a 1-command CLI login before we try to expand Gravity.",
+                "observation": "Demonstrates sequencing between lowering friction and growing the ecosystem.",
+                "implication": "Shows tactical prioritization capability, though lacking a complete execution framework.",
+                "competency": "Execution",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Incorporate milestone planning, risk management, and execution metrics."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No mention of quantitative metrics, data models, or measurement strategies."
+            ],
+            "evidence": [],
+            "recommendation": "Discuss key performance indicators, success metrics, and analytical trade-offs."
+          },
+          {
+            "competency": "Strategy",
+            "score": 3,
+            "confidence": "low",
+            "strengths": [
+              "Considers ecosystem lock-in and long-term community dynamics."
+            ],
+            "weaknesses": [
+              "Strategy is wrapped in a heavy metaphor without deep market or competitive analysis."
+            ],
+            "evidence": [
+              {
+                "quote": "Gravity is the density of existing open-source package repositories that keeps developers in our ecosystem.",
+                "observation": "Recognizes network effects and ecosystem density as strategic moats.",
+                "implication": "Indicates high-level strategic thinking around platforms and developer ecosystems.",
+                "competency": "Strategy",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Ground strategic concepts in specific market positioning and competitive differentiation."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "No behavioral or leadership situations were discussed in the transcript."
+            ],
+            "evidence": [],
+            "recommendation": "Practice behavioral answers using concrete past experiences involving cross-functional leadership."
+          },
+          {
+            "competency": "Communication",
+            "score": 3,
+            "confidence": "medium",
+            "strengths": [
+              "Articulate and structured delivery using a custom mental model."
+            ],
+            "weaknesses": [
+              "Relies heavily on abstract physics terminology which can obscure direct answers."
+            ],
+            "evidence": [
+              {
+                "quote": "Instead of standard acronyms, I use a three-lens physics analogy: Friction, Gravity, and Thermal Velocity.",
+                "observation": "Clearly frames the mental model used for communication.",
+                "implication": "Engaging delivery, though risks overcomplicating straightforward product concepts.",
+                "competency": "Communication",
+                "signalType": "strength"
+              }
+            ],
+            "recommendation": "Balance creative mental models with clear, straightforward business and product communication."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Response is limited to a single snippet, leaving major PM competencies unassessed.",
+          "Lacks quantitative analytics, structured execution plans, and behavioral examples."
+        ],
+        "priorityImprovements": [
+          "Provide comprehensive answers covering all stages of the product lifecycle.",
+          "Incorporate data-driven decision making and success metrics.",
+          "Balance conceptual analogies with practical product execution details."
+        ],
+        "nextPracticeRecommendations": [
+          "Practice full end-to-end product case studies covering discovery, strategy, execution, and analytics.",
+          "Prepare structured STAR stories for leadership and behavioral competencies."
+        ],
+        "interviewId": "int-24",
+        "generatedAt": "2026-09-08T06:46:43.285Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-24"
+        }
+      },
+      "scores": {
+        "score_validity": 1,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 0,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [
+        "unsupported_score",
+        "framework_keyword_bias"
+      ],
+      "results": [
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "score_validity",
+          "score": 1,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 1/2 on score_validity for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "framework_bias",
+          "score": 0,
+          "maxScore": 1,
+          "pass": false,
+          "explanation": "Scored 0/1 on framework_bias for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Candidate uses unconventional framework."
+        },
+        {
+          "evalRunId": "run-1788850003285-CASE-24",
+          "evalCaseId": "CASE-24",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Candidate uses unconventional framework."
+        }
+      ],
+      "latencyMs": 4565,
+      "tokenUsage": {
+        "promptTokens": 775,
+        "completionTokens": 1175,
+        "totalTokens": 1950
+      },
+      "passed": false,
+      "normalizedScore": 82,
+      "createdAt": "2026-09-08T06:46:43.285Z"
+    },
+    {
+      "id": "evalrun-1788850008289-CASE-25",
+      "evalCaseId": "CASE-25",
+      "systemType": "evaluator",
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "1.0.0",
+      "rubricVersion": "2026.1",
+      "output": {
+        "id": "eval-1788850008290",
+        "overallScore": 15,
+        "recommendation": "needs_improvement",
+        "competencyEvaluations": [
+          {
+            "competency": "Product Sense",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Superficial name-dropping of frameworks without applying first-principles reasoning",
+              "Lack of user segmentation or problem exploration"
+            ],
+            "evidence": [
+              {
+                "quote": "First, I would like to structure my answer using the RICE framework and CIRCLES framework.",
+                "observation": "Candidate name-drops multiple frameworks in a single sentence without applying them.",
+                "implication": "Demonstrates framework keyword bias rather than genuine product sense.",
+                "competency": "Product Sense",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Focus on deep user empathy, identifying pain points, and brainstorming tailored solutions rather than reciting framework names."
+          },
+          {
+            "competency": "Execution",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Unrealistic execution timelines",
+              "Failure to prioritize effectively by suggesting launching everything"
+            ],
+            "evidence": [
+              {
+                "quote": "Second, in summary, we can try both feature A and feature B because both features are very nice.",
+                "observation": "Treats prioritization by simply accepting all options.",
+                "implication": "Shows lack of trade-off analysis and resource constraint management.",
+                "competency": "Execution",
+                "signalType": "weakness"
+              },
+              {
+                "quote": "Third, to structure this, our North Star metric will be user happiness and we will launch next week.",
+                "observation": "Proposes an arbitrary, unmeasurable metric and an unrealistic launch timeline.",
+                "implication": "Indicates poor understanding of execution, roadmap planning, and operational constraints.",
+                "competency": "Execution",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Learn how to make hard trade-offs, define measurable success metrics, and establish realistic go-to-market milestones."
+          },
+          {
+            "competency": "Analytics",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "Uses vague and unmeasurable definitions for metrics"
+            ],
+            "evidence": [
+              {
+                "quote": "Third, to structure this, our North Star metric will be user happiness and we will launch next week.",
+                "observation": "Defines North Star metric as 'user happiness' without instrumentation or quantification.",
+                "implication": "Lacks foundational analytical rigor for tracking product success.",
+                "competency": "Analytics",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Practice defining specific, quantifiable metrics (e.g., retention, DAU/MAU ratios, conversion rates) rather than abstract concepts."
+          },
+          {
+            "competency": "Strategy",
+            "score": 1,
+            "confidence": "high",
+            "strengths": [],
+            "weaknesses": [
+              "No strategic alignment, vision, or goal setting mentioned"
+            ],
+            "evidence": [
+              {
+                "quote": "Second, in summary, we can try both feature A and feature B because both features are very nice.",
+                "observation": "Fails to connect features to broader business goals or strategic vision.",
+                "implication": "Inability to formulate coherent product strategy.",
+                "competency": "Strategy",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Incorporate company mission, market trends, and long-term differentiation when evaluating product opportunities."
+          },
+          {
+            "competency": "Leadership & Behavioral",
+            "score": 1,
+            "confidence": "low",
+            "strengths": [],
+            "weaknesses": [
+              "Insufficient evidence provided in the transcript to evaluate leadership and behavioral competencies fully"
+            ],
+            "evidence": [],
+            "recommendation": "Provide structured behavioral examples using the STAR method when asked about past experiences."
+          },
+          {
+            "competency": "Communication",
+            "score": 2,
+            "confidence": "medium",
+            "strengths": [
+              "Attempted to use signposting ('First', 'Second', 'Third')"
+            ],
+            "weaknesses": [
+              "Structure felt robotic and disconnected from logical problem-solving steps"
+            ],
+            "evidence": [
+              {
+                "quote": "First, I would like to structure my answer using the RICE framework and CIRCLES framework.",
+                "observation": "Uses transition words, but the content following them lacks substance.",
+                "implication": "Communication relies on superficial structure rather than clear, persuasive reasoning.",
+                "competency": "Communication",
+                "signalType": "weakness"
+              }
+            ],
+            "recommendation": "Ensure structural signposting guides the listener through a logical narrative rather than serving as a checklist of buzzwords."
+          }
+        ],
+        "overallStrengths": [],
+        "overallWeaknesses": [
+          "Over-reliance on framework buzzwords without demonstrating underlying analytical or strategic reasoning",
+          "Inability to make trade-offs, opting instead to build all options",
+          "Use of vague metrics like 'user happiness' and unrealistic planning timelines"
+        ],
+        "priorityImprovements": [
+          "Move away from reciting framework names and focus on first-principles problem solving",
+          "Develop rigor in prioritization by evaluating impact versus effort and resource constraints",
+          "Learn how to define concrete, measurable success metrics rather than abstract concepts"
+        ],
+        "nextPracticeRecommendations": [
+          "Practice mock product design questions focusing on deep user empathy and trade-off decisions",
+          "Review case studies on how top tech companies prioritize features and manage scope"
+        ],
+        "interviewId": "int-25",
+        "generatedAt": "2026-09-08T06:46:53.266Z",
+        "metadata": {
+          "model": "gemini-3.5-flash-lite",
+          "promptVersion": "1.0.0",
+          "rubricVersion": "2026.1",
+          "testCaseId": "CASE-25"
+        }
+      },
+      "scores": {
+        "score_validity": 2,
+        "evidence_accuracy": 2,
+        "rubric_adherence": 2,
+        "framework_bias": 1,
+        "insufficient_evidence_handling": 1,
+        "communication_separation": 1,
+        "consistency": 2
+      },
+      "failures": [],
+      "results": [
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "score_validity",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on score_validity for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "evidence_accuracy",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on evidence_accuracy for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "rubric_adherence",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on rubric_adherence for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "framework_bias",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on framework_bias for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "insufficient_evidence_handling",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on insufficient_evidence_handling for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "communication_separation",
+          "score": 1,
+          "maxScore": 1,
+          "pass": true,
+          "explanation": "Scored 1/1 on communication_separation for Framework keywords with weak reasoning."
+        },
+        {
+          "evalRunId": "run-1788850013266-CASE-25",
+          "evalCaseId": "CASE-25",
+          "metric": "consistency",
+          "score": 2,
+          "maxScore": 2,
+          "pass": true,
+          "explanation": "Scored 2/2 on consistency for Framework keywords with weak reasoning."
+        }
+      ],
+      "latencyMs": 4975,
+      "tokenUsage": {
+        "promptTokens": 754,
+        "completionTokens": 1406,
+        "totalTokens": 2160
+      },
+      "passed": true,
+      "normalizedScore": 100,
+      "createdAt": "2026-09-08T06:46:53.266Z"
+    }
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "promptVersion": "1.0.0",
+  "rubricVersion": "2026.1",
+  "averageLatencyMs": 3013,
+  "totalTokens": 32485,
+  "regressionDetected": false,
+  "regressionDetails": [],
+  "createdAt": "2026-09-08T06:46:53.267Z"
+}
